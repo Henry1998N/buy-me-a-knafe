@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="recipience-page.css">
+    <title>Recipience Page</title>
+</head>
+<body>
+    <div>
+        <h2>Support Me</h2>
+        <p>If you find my content helpful, consider buying me a knafeh to support me.</p>
+      <h2>What's in it for you?</h2>
+      <ul>
+        <li>Early access to new content</li>
+        <li>Exclusive behind-the-scenes content</li>
+        <li>Personalized thank you note</li>
+      </ul>
+    </div>
+
+    <div class="recipience-container">
+        <p class="title">Buy SomeName a knafeh</p>
+        <div class="amount-form">
+            <img class="knafeh-icon" src="https://i.pinimg.com/originals/5e/6f/b2/5e6fb2231a619cdc3770518ec0e8e7c7.jpg"/>
+            <p>X</p>
+            <button class="btn">1</button>
+            <button class="btn">3</button>
+            <button class="btn">5</button>
+            <input type="number" min="1", max="99" placeholder="10"/>
+        </div>
+        <input type="text" placeHolder="Name (Optional)"/>
+        <textarea placeholder="Say something nice.. (Optional)"></textarea>
+        <button class="btn submit-btn">Support {{Sum}}</button>
+    </div>
+</body>
+</html>

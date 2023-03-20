@@ -1,0 +1,97 @@
+:root{
+    --recipience-theme-color: #fb8c00;
+    --contribution-theme-color-light: #ffcc80;
+    --input-background-color: #f5f5f5;
+}
+.recipience-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 10px 30px 30px 30px;
+}
+
+.recipience-container input{
+    font-family: 'Quicksand', sans-serif;
+}
+
+.recipience-container .title{
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.recipience-container .amount-form{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    border: 1px solid var(--contribution-theme-color-light);
+    border-radius: 5px;
+    padding: 20px 10px;
+}
+
+
+.recipience-container .amount-form{
+    display: flex;
+    gap: 10px;
+}
+.recipience-container .amount-form p{
+    font-weight: bold;
+}
+.recipience-container .amount-form input{
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 5px 0;
+}
+.recipience-container .amount-form input:focus{
+    outline: none;
+}
+.recipience-container .amount-form .knafeh-icon{
+    width: 50px;
+    height: 50px;
+}
+.recipience-container .amount-form .btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    color: var(--recipience-theme-color);
+    border: 1px solid var(--contribution-theme-color-light);
+    background-color: white;
+}
+.recipience-container .amount-form .btn:hover{
+    color: white;
+    border: 1px solid var(--recipience-theme-color);
+    background-color: var(--recipience-theme-color);
+}
+
+.recipience-container > input{
+    font-size: 1.1em;
+    background-color: var(--contribution-theme-color-light);
+    border: none;
+    padding: 10px;
+}
+.recipience-container > input:focus{
+    outline: none;
+}
+
+.recipience-container textarea{
+    height: 120px;
+    padding: 10px;
+    font-family: 'Quicksand', sans-serif;
+    border: none;
+    font-size: 1.1em;
+    background-color: var(--contribution-theme-color-light);
+    resize: none;
+}
+.recipience-container textarea:focus{
+    outline: none;
+}
+
+.recipience-container .submit-btn{
+    color: white;
+    background-color: var(--recipience-theme-color);
+    padding: 15px 10px;
+}

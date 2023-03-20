@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: none;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+:root{
+    --knafeh-color: #ffea00;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    margin: 0;
+}
+
+.btn{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    background-color: none;
+    border: none;
+    border-radius: 2rem;
+    padding: 10px 15px;
+}
+.btn:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition-duration: 200ms;
+}
+
+
+
+
+
+
+.bar{
+    background-color: white;
+    width: 85%;
+    height: 30px;
+    padding: 20px;
+    border-radius: 2rem;
+    box-shadow: 0 0 100px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+
+/* ---- Navigation bar ---- */
+.navigation-bar{
+    margin-top: 15px;
+}
+.knafeh-icon{
+    width: auto;
+    height: 55px;
+}
+.knafeh-icon:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition-duration: 200ms;
+}
+.signup-btn{
+    background-color: var(--knafeh-color);
+}
+.login-btn{
+    background-color: white;
+}
+/* ---- End of navigation bar ---- */
+
+
+
+/* ---- About ---- */
+.about-container{
+    padding: 2% 15% 2% 15%;
+}
+.about-title-header{
+    text-align: center;
+}
+.about-header{
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+}
+/* ---- End of about ---- */
+
+
+
+/* ---- Create recipience form ---- */
+.create-recipience-bar{
+    width: 100%;
+    padding: 20px 15px;
+}
+.recipience-form .input-container{
+    display: flex;
+}
+.recipience-form .input-container p{
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+.recipience-form .input-container input{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: 1.15rem;
+    border: none;
+}
+.recipience-form .input-container input:focus{
+    outline: none;
+}
+.recipience-form .btn{
+    background-color: var(--knafeh-color);
+    font-size: 1.15rem;
+}
+
+
+.recipience-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.recipience-form > input,.recipience-form textarea{
+    font-family: 'Quicksand', sans-serif;
+    padding: 15px;
+    font-size: 1.15rem;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 1.1em;
+    width: 60%;
+    background-color: white;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+.recipience-form textarea{
+    height: 100px;
+    resize: none;
+}
+.recipience-form > input:focus, .recipience-form textarea:focus{
+    outline: none;
+    border: 2px solid var(--knafeh-color);
+}
+/* ---- Create recipience form ---- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>BuyMeAKnafeh</title>
+
+</head>
+
+<body>
+
+    <div class="bar navigation-bar">
+        <img class="knafeh-icon" src="https://i.pinimg.com/originals/5e/6f/b2/5e6fb2231a619cdc3770518ec0e8e7c7.jpg"/>
+        <div class="buttons">
+            <button class="btn login-btn">Log In</button>
+            <button class="btn signup-btn">Sign Up</button>
+        </div>
+    </div>
+
+    <div class="about-container">
+        <h1 class="about-header">Supporting each other is crucial for personal and collective growth.</h1>
+        <h2 class="about-title-header">Why Buy Me A Knafeh?</h2>
+        <p class="about-text">
+            A free, fast, and meaningful way to accept support and memberships from your fans.
+            <hr/>
+            Buying a knafeh is a way to support your favorite people, motivate them and keep them going.
+            <br/>
+            Supporting one another is not only an act of kindness, 
+            but also a powerful tool to build stronger relationships, 
+            foster growth and achieve great things together.
+            <br/>
+        </p>
+    </div>
+
+    <div class="create-page-container">
+        <form class="recipience-form">
+            <div class="bar create-recipience-bar">
+                <div class="input-container">
+                    <p>buymeaknafeh.com/</p>
+                    <input type="text" required placeHolder="recipience-link"/>
+                </div>
+                <button type="submit" class="btn">Create My Page</button>
+            </div>
+            <input type="text" required placeHolder="Recipience Title"/>
+            
+            <textarea placeholder="Description&#10;Example:&#10;Hey 👋 I'm making sure you always have something to read about The Bachelor."></textarea>
+        </form>
+    </div>
+
+    
+  <footer>
+    <p>&copy; 2023 Buy Me A Knafeh</p>
+  </footer>
+
+<!--
+    <div class="weather-app-container">
+        <form class="city-form">
+            <input type="text" placeholder="City" required />
+            <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+
+        <div class="cities"></div>
+
+        <script id="cities-template" type="text/x-handlebars-template">
+            {{#each cities}}
+                <div class="city-weather">
+
+                    <div class="city-name">
+                        <i class="location-icon fa-solid fa-location-dot"></i>
+                        <p>{{name}}</p>
+                    </div>
+
+                    <div class="city-controller" data-id={{id}}>
+                        {{#if isSaved}}
+                            <button class="delete-btn">
+                                <i class="delete-icon fa-solid fa-trash"></i>
+                            </button>
+                        {{else}}
+                            <button class="save-btn">
+                                <i class="save-icon fa-solid fa-floppy-disk"></i>
+                            </button>
+                        {{/if}}
+                    </div>
+
+                    <div class="humidity-container">
+                        <i class="humidity-icon fa-solid fa-water"></i>
+                        <div class="humidity">
+                            <p>{{humidity}}</p>
+                            <small>Humidity</small>
+                        </div>
+                    </div>
+
+                    <div class="wind-speed-container">
+                        <i class="wind-speed-icon fa-solid fa-wind"></i>
+                        <div class="wind-speed">
+                            <p>{{windSpeed}}</p>
+                            <small>Wind Speed</small>
+                        </div>
+                    </div>
+
+                    <div class="city-data">
+                        <img class="weather-icon" src={{conditionPic}} alt="Condition Picture"/>
+                        <p class="temperature">{{temperature}}</p>
+                        <p class="condition">{{condition}}</p>
+
+
+                    </div>
+                </div>
+            {{/each}}
+        </script>
+    </div>
+-->
+    <script src="APIManager.js"></script>
+    <script src="Recipience.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="main.js"></script>
+</body>
+
+
+</html>

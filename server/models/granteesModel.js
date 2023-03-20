@@ -12,10 +12,6 @@ const granteeSchema = new Schema({
   balance: Number,
   email: String,
   supporters: [],
-<<<<<<< HEAD
-=======
-  hi: [],
->>>>>>> majd-branch
 });
 
 const Grantee = mongoose.model("grantee", granteeSchema);

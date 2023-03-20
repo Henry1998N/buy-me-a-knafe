@@ -14,6 +14,6 @@ const granteeSchema = new Schema({
   supporters: [],
 });
 
-const Grantee = mongoose.model("grantee", granteeSchema);
+const Grantee = mongoose.model("Grantee", granteeSchema);
 
 module.exports = Grantee;

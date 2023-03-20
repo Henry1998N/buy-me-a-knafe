@@ -13,6 +13,7 @@ router.get("/users", function (req, res) {
         picture: a.picture.thumbnail,
       };
     });
+    let x = 10;
     // for (let i = 0; i < 7; i++) {
     //   axios
     //     .get(

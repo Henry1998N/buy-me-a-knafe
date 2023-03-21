@@ -66,6 +66,7 @@ footer{
 
 /* ---- Navigation bar ---- */
 .navigation-bar{
+    position: sticky;
     margin-top: 15px;
 }
 .knafeh-icon{

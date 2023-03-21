@@ -29,5 +29,51 @@ const getGrantee = function (id) {
     renderer.renderGrantee(grantee);
   });
 };
-
+const getSupporterDetails = function () {
+  let name = $("#supporterName").val();
+  let message = $("#SupporterMessage").val();
+  let newSupporter = { name, message };
+  return newSupporter;
+};
+$(".grantee-profile").on("click", "#supportBtn", function () {
+  let name;
+  let message;
+  let granteeId = getIdFromUrl();
+  let supportText = $(this).text();
+  if (supportText === "Choose Amount") {
+    alert("you must choose amount to support");
+    return;
+  }
+  let amount = supportText.slice(
+    supportText.indexOf(" "),
+    supportText.length - 1
+  );
+  amount = parseInt(amount);
+  let newSupporter = getSupporterDetails();
+  if (newSupporter.name == "") {
+    name = "Someone";
+  } else {
+    name = newSupporter.name;
+  }
+  if (newSupporter.message == "") {
+    message = `${newSupporter.name} has nothing to say`;
+  } else {
+    message = newSupporter.message;
+  }
+  newSupporter.amount = amount;
+  let picture =
+    "https://static.vecteezy.com/system/resources/previews/007/296/443/original/user-icon-person-icon-client-symbol-profile-icon-vector.jpg";
+  $.post(`/supporter?granteeId=${granteeId}`, {
+    name: name,
+    message: message,
+    amount: amount,
+    picture: picture,
+  })
+    .then(() => {
+      alert(`thanks ${name} for support`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 getGrantee(getIdFromUrl());

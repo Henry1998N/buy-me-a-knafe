@@ -30,11 +30,12 @@ const getSupportersDonations = async function (id) {
 const genrateSupporter = function (supporter) {
   const newSupporter = new Supporter({
     name: supporter.name,
-    amount: supporter.amount,
+    amount: parseInt(supporter.amount),
     message: supporter.message,
     picture: supporter.picture,
     date: new Date(),
   });
+  console.log(newSupporter);
   newSupporter.save();
   return newSupporter;
 };
@@ -47,7 +48,7 @@ const updateGranteeBalance = function (granteeId, granteeBalance) {
 };
 router.post("/supporter", async function (req, res) {
   const granteeId = req.query.granteeId;
-  const supporter = req.body.supporter;
+  const supporter = req.body;
   const newSupporter = genrateSupporter(supporter);
   Grantee.findOneAndUpdate(
     { _id: granteeId },

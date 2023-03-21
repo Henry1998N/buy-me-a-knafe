@@ -12,13 +12,6 @@ router.get("/grantees", function (req, res) {
   });
 });
 
-async function currentBalance(id) {
-  return Grantee.findById(id).then((grantee) => {
-    const balance = grantee.s;
-    return parseInt(balance);
-  });
-}
-
 router.post("/grantee/:id", function (req, res) {
   Grantee.findById(id).then((grantee) => {
     const supporters = grantee.supporters;
@@ -27,21 +20,6 @@ router.post("/grantee/:id", function (req, res) {
       amount += parseInt(supporter.amount);
     });
     grantee.balance = amount;
-  });
-});
-
-router.put("/grantee/:id", async function (req, res) {
-  const id = req.params.id;
-  const balance = await currentBalance(id);
-  const donation = req.query.donation;
-  const amount = balance + parseInt(donation);
-
-  Grantee.findByIdAndUpdate(id, { balance: amount }, function (err, grantee) {
-    if (err) {
-      res.status(404).send(err);
-    } else {
-      res.send(grantee);
-    }
   });
 });
 

@@ -42,19 +42,11 @@ const saveGrantees = function (grantees) {
     newGrante.save();
   });
 };
-router.get("/users", function (req, res) {
-  getUsers()
-    .then(async (users) => {
-      for (let i = 0; i < 7; i++) {
-        let section = await getAboutMeSection();
-        users[i].aboutme = section;
-      }
-      return users;
-    })
-    .then((users) => {
-      // saveGrantees(users);
-      res.send(users);
-    });
+
+router.get("/grantees", function (req, res) {
+  Grantee.find({}).then((grantee) => {
+    res.send(grantee);
+  });
 });
-router.get("/grantees", function (req, res) {});
+
 module.exports = router;

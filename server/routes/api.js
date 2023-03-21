@@ -38,29 +38,28 @@ const genrateSupporter = function (supporter) {
     picture: supporter.picture,
     date: new Date(),
   });
+  newSupporter.save();
   return newSupporter;
+};
+const updateGranteeBalance = function (granteeId, granteeBalance) {
+  return Grantee.findByIdAndUpdate(granteeId, { balance: granteeBalance }).then(
+    () => {
+      return "updated";
+    }
+  );
 };
 router.post("/supporter", async function (req, res) {
   const granteeId = req.query.granteeId;
   const supporter = req.body.supporter;
   const newSupporter = genrateSupporter(supporter);
-  Grantee.update(
+  Grantee.findOneAndUpdate(
     { _id: granteeId },
     { $push: { supporters: newSupporter } }
   ).then(async () => {
     const granteeBalance = await getSupportersDonations(granteeId);
-    Grantee.findByIdAndUpdate(granteeId, { balance: granteeBalance }).then(
-      () => {
-        res.send({ msg: "updated" });
-      }
-    );
+    const message = await updateGranteeBalance(granteeId, granteeBalance);
+    res.send({ message: message });
   });
-  //   Grantee.findByIdAndUpdate(granteeId,{{balance:granteeBalance},{}})
-  //   // Grantee.findById(granteeId).then(async (grantee) => {
-  //   //   grantee.supporters.push(supporter);
-  //   //   grantee.balance = granteeBalance;
-  //   //   res.send(grantee);
-  //   // });
 });
 
 module.exports = router;

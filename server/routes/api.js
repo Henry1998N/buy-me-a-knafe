@@ -11,6 +11,23 @@ router.get("/grantees", function (req, res) {
   });
 });
 
+router.post("/signUp", async function (req, res) {
+  let newGrantee = req.body;
+  let g1 = new Grantee({
+    firstName: newGrantee.firstName,
+    lastName: newGrantee.lastName,
+    picture: newGrantee.picture,
+    description: newGrantee.description,
+    aboutMe: newGrantee.aboutMe,
+    city: newGrantee.city,
+    country: newGrantee.country,
+    balance: 0,
+    email: newGrantee.email,
+    supporters: [],
+  });
+  g1.save();
+});
+
 router.get("/grantee", function (req, res) {
   let id = req.query.id;
   Grantee.findById({ _id: id }).then((grantee) => {

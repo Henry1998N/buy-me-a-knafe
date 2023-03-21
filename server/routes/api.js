@@ -8,7 +8,6 @@ const { log } = require("handlebars");
 
 router.get("/grantees", function (req, res) {
   Grantee.find({}).then((grantee) => {
-    console.log(grantee);
     res.send(grantee);
   });
 });
@@ -16,7 +15,6 @@ router.get("/grantees", function (req, res) {
 router.get("/grantee", function (req, res) {
   let id = req.query.id;
   Grantee.findById({ _id: id }).then((grantee) => {
-    console.log(grantee);
     res.send(grantee);
   });
 });

@@ -13,6 +13,7 @@ mongoose
 
 app.use(express.static(path.join(__dirname, "dist/homepage")));
 app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "dist/sign-up")));
 app.use(express.static(path.join(__dirname, "dist/grantees")));
 app.use(express.static(path.join(__dirname, "node_modules")));
 app.use(express.json());

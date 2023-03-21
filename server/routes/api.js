@@ -57,5 +57,14 @@ router.post("/supporter", async function (req, res) {
     const message = await updateGranteeBalance(granteeId, granteeBalance);
     res.send({ message: message });
   });
-};
+});
+
+router.get("/supporters", function (req, res) {
+  let granteeId = req.query.granteeId;
+  Grantee.findById(granteeId)
+    .populate("supporters")
+    .then((grantee) => {
+      res.send(grantee.supporters);
+    });
+});
 module.exports = router;

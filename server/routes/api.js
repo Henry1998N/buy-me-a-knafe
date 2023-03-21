@@ -1,21 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+
 const Grantee = require("../models/granteesModel");
-const getUsers = function () {
-  return axios.get("https://randomuser.me/api/?results=7").then((data) => {
-    let users = data.data.results.map((a) => {
-      return {
-        firstName: a.name.first,
-        lastName: a.name.last,
-        city: a.location.city,
-        country: a.location.country,
-        email: a.email,
-        picture: a.picture.thumbnail,
-      };
-    });
-    return users;
+
+router.get("/grantees", function (req, res) {
+  Grantee.find({}).then((grantee) => {
+    res.send(grantee);
   });
+<<<<<<< HEAD
 };
 const getAboutMeSection = async function () {
   return axios
@@ -55,6 +48,8 @@ router.get("/users", function (req, res) {
       // saveGrantees(users);
       res.send(users);
     });
+=======
+>>>>>>> 120b4d6f0badec0ba82554457755ba92e18b6913
 });
-router.get("/grantees", function (req, res) {});
+
 module.exports = router;

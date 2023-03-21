@@ -1,5 +1,15 @@
 class APIManager {
-  constructor() {}
+  constructor() {
+    this.grantees = [];
+  }
+
+    getGrantees() {
+      return $.get('/grantees').then((grantees) => {
+        this.grantees = []
+        this.grantees.push(...grantees);
+            return this.grantees
+      })
+    }
 
   // fetchCityWeatherByCityName(cityName) {
   //     return $.getJSON("/weather/city/" + cityName)

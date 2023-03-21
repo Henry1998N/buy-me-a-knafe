@@ -1,28 +1,24 @@
-const renderer = new Renderer()
-const apiManager = new APIManager()
+const renderer = new Renderer();
+const apiManager = new APIManager();
+let recipiences = [];
 
-$("form.recipience-form").on("submit", function(event){
-    event.preventDefault()
-    const recipienceLink = $(this)[0][0].value
-    const recipienceTitle = $(this)[0][2].value
-    const recipienceAbout = $(this)[0][3].value
+$("form.recipience-form").on("submit", function (event) {
+  event.preventDefault();
+  const recipienceLink = $(this)[0][0].value;
+  const recipienceTitle = $(this)[0][2].value;
+  const recipienceAbout = $(this)[0][3].value;
 
-
-
-    /*
+  /*
     apiManager.fetchCityWeatherByCityName(cityName).then(fetchedCityWeather => {
         cities.push(getCityWeatherInstance(fetchedCityWeather, false))
         renderer.renderCities(cities)
     }).catch(err => alert("City not found"))
     */
 
-    $(this)[0][0].value = ''
-    $(this)[0][2].value = ''
-    $(this)[0][3].value = ''
-})
-
-
-
+  $(this)[0][0].value = "";
+  $(this)[0][2].value = "";
+  $(this)[0][3].value = "";
+});
 
 /*
 function onPageLoad(){

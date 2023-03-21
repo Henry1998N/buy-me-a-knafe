@@ -1,4 +1,6 @@
 class Renderer {
+  constructor() {}
+
   handleBarHelper(sourceSelectorName, templateObject, selectorNameToAppend) {
     const source = $(sourceSelectorName).html();
     const template = Handlebars.compile(source);

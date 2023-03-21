@@ -1,6 +1,19 @@
 const renderer = new Renderer();
-const apiManager = new APIManager();
+//const apiManager = new APIManager();
 let recipiences = [];
+
+
+async function fetchGrantees() {
+    return $.get('/grantees');
+  }
+
+async function onPageLoad(){
+    const grantees = await fetchGrantees()
+    console.log(grantees)
+    renderer.renderGrantees(grantees)
+}
+
+onPageLoad()
 
 $("form.recipience-form").on("submit", function (event) {
   event.preventDefault();

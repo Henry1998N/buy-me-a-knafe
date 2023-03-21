@@ -3,7 +3,6 @@ const router = express.Router();
 const axios = require("axios");
 
 const Grantee = require("../models/granteesModel");
-
 const { log } = require("handlebars");
 
 router.get("/grantees", function (req, res) {
@@ -26,7 +25,7 @@ router.post("/supporters/:granteeId", function (req, res) {
       $match: { _id: granteeId },
     },
     {
-      $group: { _id: "$group", amount: { $sum: "$amount" } },
+      $group: { _id: "$group", amount: { $sum: "" } },
     },
   ]).then((grantee) => {
     console.log(grantee);

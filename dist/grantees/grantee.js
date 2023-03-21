@@ -7,7 +7,7 @@ class Grantee {
   }
 }
 const KNAFEPRICE = 20;
-
+const renderer = new Renderer();
 $(".amount-form").on("click", ".btn", function () {
   let amount = parseInt($(this).text());
   $(".submit-btn").text(`Support ${amount * KNAFEPRICE}₪`);
@@ -16,6 +16,14 @@ $(".amount-form").on("click", ".btn", function () {
 const getIdFromUrl = function () {
   const url = window.location.href;
   const id = url.slice(url.indexOf("=") + 1);
-  console.log(id);
+  return id;
 };
-getIdFromUrl();
+
+const getGrantee = function (id) {
+  $.get(`/grantee?id=${id}`).then((grantee) => {
+    console.log(grantee);
+    renderer.renderGrantee(grantee);
+  });
+};
+
+getGrantee(getIdFromUrl());

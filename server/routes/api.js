@@ -3,6 +3,7 @@ const router = express.Router();
 const axios = require("axios");
 
 const Grantee = require("../models/granteesModel");
+const { log } = require("handlebars");
 
 router.get("/grantees", function (req, res) {
   Grantee.find({}).then((grantee) => {
@@ -13,22 +14,31 @@ router.get("/grantees", function (req, res) {
 
 async function currentBalance(id) {
   return Grantee.findById(id).then((grantee) => {
-    const balance = grantee.balance;
-    return balance;
+    const balance = grantee.s;
+    return parseInt(balance);
   });
 }
 
+router.post("/grantee/:id", function (req, res) {
+  Grantee.findById(id).then((grantee) => {
+    const supporters = grantee.supporters;
+    let amount = 0;
+    supporters.forEach((supporter) => {
+      amount = parseInt(supporter.amount);
+    });
+    grantee.balance = amount;
+  });
+});
+
 router.put("/grantee/:id", async function (req, res) {
   const id = req.params.id;
-  console.log(id);
   const balance = await currentBalance(id);
-  console.log(balance);
   const donation = req.query.donation;
-  const amount = balance + donation;
+  const amount = balance + parseInt(donation);
 
   Grantee.findByIdAndUpdate(id, { balance: amount }, function (err, grantee) {
     if (err) {
-      res.send(err);
+      res.status(404).send(err);
     } else {
       res.send(grantee);
     }

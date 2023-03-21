@@ -42,6 +42,7 @@ const saveGrantees = function (grantees) {
     newGrante.save();
   });
 };
+
 router.get("/users", function (req, res) {
   getUsers()
     .then(async (users) => {
@@ -52,7 +53,7 @@ router.get("/users", function (req, res) {
       return users;
     })
     .then((users) => {
-      saveGrantees(users);
+      // saveGrantees(users);
       res.send(users);
     });
 });

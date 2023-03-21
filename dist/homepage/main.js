@@ -15,6 +15,44 @@ async function onPageLoad(){
 
 onPageLoad()
 
+
+
+$(".grantees").on("click", ".grantee", function(){
+    const id = $(this).data().id
+    
+    /*
+    const id = $(this).parent().data().id
+    const cityWeatherIndex = cities.findIndex(cityWeather => cityWeather.id === id)
+    const cityWeather = cities[cityWeatherIndex]
+    cityWeather.isSaved = true
+    renderer.renderCities(cities)
+    apiManager.saveCityWeather(cityWeather)
+    */
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $("form.recipience-form").on("submit", function (event) {
   event.preventDefault();
   const recipienceLink = $(this)[0][0].value;

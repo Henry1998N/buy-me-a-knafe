@@ -39,6 +39,23 @@ const genrateSupporter = function (supporter) {
   newSupporter.save();
   return newSupporter;
 };
+
+// const genrateGrantee = function (grantee) {
+//   const newGrantee = new Grantee({
+//     firstName: grantee.firstName,
+//     lastName: lastName,
+//     picture: picture,
+//     description: description,
+//     aboutMe: aboutMe,
+//     city: city,
+//     country: country,
+//     balance: 0,
+//     email: email,
+//     supporters: [],
+//   });
+//   console.log(newGrantee);
+
+// }
 const updateGranteeBalance = function (granteeId, granteeBalance) {
   return Grantee.findByIdAndUpdate(granteeId, { balance: granteeBalance }).then(
     () => {
@@ -68,4 +85,7 @@ router.get("/supporters", function (req, res) {
       res.send(grantee.supporters);
     });
 });
+
+
+
 module.exports = router;

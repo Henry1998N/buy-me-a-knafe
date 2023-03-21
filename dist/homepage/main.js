@@ -2,6 +2,7 @@ const renderer = new Renderer();
 //const apiManager = new APIManager();
 let recipiences = [];
 
+
 async function fetchGrantees() {
   return $.get("/grantees");
 }

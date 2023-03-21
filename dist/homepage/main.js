@@ -1,6 +1,5 @@
 const renderer = new Renderer()
 const apiManager = new APIManager()
-let recipiences = []
 
 $("form.recipience-form").on("submit", function(event){
     event.preventDefault()

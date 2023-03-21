@@ -8,6 +8,7 @@ class Grantee {
 }
 const KNAFEPRICE = 20;
 const renderer = new Renderer();
+const supporters = []
 
 $(".grantee-profile").on("click", ".amount-form .btn", function () {
   let amount = parseInt($(this).text()) || $(this).closest("input").val();
@@ -26,9 +27,15 @@ const getIdFromUrl = function () {
 
 const getGrantee = function (id) {
   $.get(`/grantee?id=${id}`).then((grantee) => {
-    renderer.renderGrantee(grantee);
-  });
-};
+    renderer.renderGrantee(grantee)
+    $.get("/supporters?granteeId=" + id).then(supporters => {
+      console.log(supporters)
+      renderer.renderSupporters(supporters)
+    })
+  })
+}
+
+
 const getSupporterDetails = function () {
   let name = $("#supporterName").val();
   let message = $("#SupporterMessage").val();
@@ -61,7 +68,7 @@ $(".grantee-profile").on("click", "#supportBtn", function () {
     message = newSupporter.message;
   }
   newSupporter.amount = amount;
-  let picture =
+  let picture = 
     "https://static.vecteezy.com/system/resources/previews/007/296/443/original/user-icon-person-icon-client-symbol-profile-icon-vector.jpg";
   $.post(`/supporter?granteeId=${granteeId}`, {
     name: name,
@@ -71,6 +78,7 @@ $(".grantee-profile").on("click", "#supportBtn", function () {
   })
     .then(() => {
       alert(`thanks ${name} for support`);
+      location.reload();
     })
     .catch((err) => {
       console.log(err);

@@ -1,49 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../homepage/style.css" />
-    <link rel="stylesheet" href="./grantee-page.css" />
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css?family=Josefin Sans"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Grantee Page</title>
-  </head>
 
-  <body>
-    <div class="header-bar">
-      <img
-        class="knafeh-icon"
-        src="https://i.pinimg.com/originals/5e/6f/b2/5e6fb2231a619cdc3770518ec0e8e7c7.jpg"
-      />
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../homepage/style.css" />
+  <link rel="stylesheet" href="./grantee-page.css" />
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Josefin Sans" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Grantee Page</title>
+</head>
 
-    <div class="grantee-profile-container">
-      <div class="grantee-profile"></div>
-    </div>
+<body>
+  <div class="header-bar">
+    <img class="knafeh-icon" src="https://i.pinimg.com/originals/5e/6f/b2/5e6fb2231a619cdc3770518ec0e8e7c7.jpg" />
+  </div>
 
-    <script id="grantee-template" type="text/x-handlebars-template">
+  <div class="grantee-profile-container">
+    <div class="grantee-profile"></div>
+  </div>
+
+  <script id="grantee-template" type="text/x-handlebars-template">
       <div class="profile-background"></div>
       <p class="header header-text">Profile</p>
       <div class="email header-text">{{email}}</div>
       <div class="profile">
+
         <div class="about">
           <p class="header-text">About me</p>
-          <div class="about-text">
-            {{aboutMe}}
-          </div>
+          <div class="about-text">{{aboutMe}}</div>
         </div>
 
         <img
@@ -52,6 +42,7 @@
           width="150"
           height="150"
         />
+
         <div class="details">
           <p class="header-text">Details</p>
           <strong>Name:</strong>
@@ -61,6 +52,7 @@
             {{city}},
             {{country}}</div>
         </div>
+
       </div>
 
       <div>
@@ -83,38 +75,48 @@
           <button class="btn">1</button>
           <button class="btn">3</button>
           <button class="btn">5</button>
-          <input
-            class="number-input"
-            type="number"
-            min="1"
-            ,
-            max="99"
-            placeholder="0"
-          />
+          <input class="number-input" type="number" min="1" max="99" placeholder="0"/>
         </div>
         <input id="supporterName" type="text" placeholder="Name (Optional)" />
         <textarea
           id="SupporterMessage"
           placeholder="Say something nice.. (Optional)"
         ></textarea>
-        <button id="supportBtn" class="btn submit-btn">Choose Amount</button>
+        <button id="supportBtn" class="btn submit-btn">Support 0₪</button>
       </div>
-
-      <h1>Supporters:</h1>
-
-      <h2>What's in it for you?</h2>
-      <ul>
-        <li>Early access to new content</li>
-        <li>Exclusive behind-the-scenes content</li>
-        <li>Personalized thank you note</li>
-      </ul>
     </script>
 
-    <footer>
-      <p>&copy; 2023 Buy Me A Knafeh</p>
-    </footer>
 
-    <script src="../utilites/Renderer.js"></script>
-    <script src="grantee.js"></script>
-  </body>
+  <div class="supporters"></div>
+
+  <script id="supporters-template" type="text/x-handlebars-template">
+    <h1>Supporters:</h1>
+          {{#each supporters}}
+          <ul>
+            <div class="supporter">
+              <li>{{name}} {{message}}</li>
+            </div>
+          </ul>
+          {{/each}}
+    </script>
+
+  <h2>What's in it for you?</h2>
+  <ul>
+    <li>Early access to new content</li>
+    <li>Exclusive behind-the-scenes content</li>
+    <li>Personalized thank you note</li>
+  </ul>
+
+
+
+
+
+  <footer>
+    <p>&copy; 2023 Buy Me A Knafeh</p>
+  </footer>
+
+  <script src="../utilites/Renderer.js"></script>
+  <script src="grantee.js"></script>
+</body>
+
 </html>

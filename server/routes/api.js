@@ -35,7 +35,6 @@ const genrateSupporter = function (supporter) {
     picture: supporter.picture,
     date: new Date(),
   });
-  console.log(newSupporter);
   newSupporter.save();
   return newSupporter;
 };

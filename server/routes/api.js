@@ -24,7 +24,7 @@ router.post("/grantee/:id", function (req, res) {
     const supporters = grantee.supporters;
     let amount = 0;
     supporters.forEach((supporter) => {
-      amount = parseInt(supporter.amount);
+      amount += parseInt(supporter.amount);
     });
     grantee.balance = amount;
   });

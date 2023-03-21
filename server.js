@@ -11,6 +11,7 @@ mongoose
   .then(() => console.log("conneted to DB"))
   .catch((err) => console.log(err));
 
+app.use(express.static(path.join(__dirname, "dist/homepage")));
 app.use(express.static(path.join(__dirname, "dist")));
 app.use(express.static(path.join(__dirname, "dist/grantees")));
 app.use(express.static(path.join(__dirname, "node_modules")));

@@ -56,4 +56,5 @@ router.get("/users", function (req, res) {
       res.send(users);
     });
 });
+router.get("/grantees", function (req, res) {});
 module.exports = router;

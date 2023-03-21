@@ -6,6 +6,7 @@ const Grantee = require("../models/granteesModel");
 
 router.get("/grantees", function (req, res) {
   Grantee.find({}).then((grantee) => {
+    console.log(grantee);
     res.send(grantee);
   });
 });

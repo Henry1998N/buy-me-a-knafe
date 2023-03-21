@@ -42,6 +42,7 @@
         </p>
     </div>
 
+    <!--
     <div class="create-page-container">
         <form class="recipience-form">
             <div class="bar create-recipience-bar">
@@ -56,7 +57,19 @@
             <textarea placeholder="Description&#10;Example:&#10;Hey 👋 I'm making sure you always have something to read about The Bachelor."></textarea>
         </form>
     </div>
+    -->
 
+
+    <div class="grantees"></div>
+
+    <script id="grantees-template" type="text/x-handlebars-template">
+        {{#each grantees}}
+            <div class="grantee">
+                <img src={{picture}} alt="Profile Picture"/>
+                <p class="name">{{firstName}} {{lastName}}</p>
+                <div class="about">{{aboutMe}}</div>
+            </div>
+        {{/each}}
     
   <footer>
     <p>&copy; 2023 Buy Me A Knafeh</p>

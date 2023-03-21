@@ -161,6 +161,52 @@ footer{
 
 
 
+.grantees{
+    width: min(900px, 90vw);
+    overflow-x: scroll;
+    display: flex;
+    gap: 20px;
+}
+
+.grantee{
+    padding: 10px;
+    border: 1px solid #f5f5f5;
+    border-radius: 5px;
+    width: 160px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+}
+.grantee:hover{
+    cursor: pointer;
+    background-color: #f5f5f5;
+}
+
+.grantee img{
+    align-self: center;
+    width: 160px;
+    height: auto;
+}
+.grantee img:hover{
+    transform: scale(1.025);
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+}
+
+.grantee .name{
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.grantee .about{
+    font-size: 0.9rem;
+    margin-top: 0;
+    height: 100%;
+    overflow-y: scroll;
+    border: 1px solid #f5f5f5;
+}
+
 
 
 

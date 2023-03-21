@@ -3,12 +3,11 @@ class APIManager {
     this.grantees = [];
   }
 
-    getGrantees() {
-      return $.get('/grantees').then((grantees) => {
-        this.grantees = []
-        this.grantees.push(...grantees);
-            return this.grantees
-      })
+    async getGrantees() {
+      const grantees = await $.get('/grantees');
+      this.grantees = [];
+      this.grantees.push(...grantees);
+      return this.grantees;
     }
 
   // fetchCityWeatherByCityName(cityName) {

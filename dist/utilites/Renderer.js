@@ -1,5 +1,5 @@
 class Renderer {
-  constructor() {}
+  constructor() { }
 
   handleBarHelper(sourceSelectorName, templateObject, selectorNameToAppend) {
     const source = $(sourceSelectorName).html();
@@ -8,7 +8,7 @@ class Renderer {
     $(selectorNameToAppend).empty().append(newHTML);
   }
 
-  // renderCities(cities) {
-  //     this.handleBarHelper('#cities-template', {cities}, '.cities')
-  // }
+  renderGrantees(grantees) {
+    this.handleBarHelper('#grantees-template', { grantees }, '.grantees')
+  }
 }

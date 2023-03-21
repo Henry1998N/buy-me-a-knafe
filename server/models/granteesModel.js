@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Supporter = require("./supporterModel");
 
 const granteeSchema = new Schema({
   firstName: String,
@@ -11,7 +12,7 @@ const granteeSchema = new Schema({
   country: String,
   balance: Number,
   email: String,
-  supporters: [],
+  supporters: [{ type: Schema.Types.ObjectId, ref: "Supporter" }],
 });
 
 const Grantee = mongoose.model("Grantee", granteeSchema);

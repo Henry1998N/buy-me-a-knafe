@@ -16,7 +16,7 @@ onPageLoad();
 
 $(".grantees").on("click", ".grantee", function () {
   const id = $(this).data().id;
-  window.location.href = "/grantees/grantee-page.html";
+  window.location.href = `/grantees/grantee-page.html?id=${id}`;
   /*
     const id = $(this).parent().data().id
     const cityWeatherIndex = cities.findIndex(cityWeather => cityWeather.id === id)

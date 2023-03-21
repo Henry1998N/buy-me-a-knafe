@@ -16,16 +16,22 @@ $("form.sign-up-form").on("submit", function () {
   let country = $(".countryInput").val();
   let email = $(".emailInput").val();
 
-  const g = {
-    firstName: firstName,
-    lastName: lastName,
-    picture: picture,
-    description: description,
-    aboutMe: aboutMe,
-    city: city,
-    country: country,
-    balance: 0,
-    email: email,
-    supporters: [],
-  };
+  $.post(
+    "/signUp",
+    {
+      firstName: firstName,
+      lastName: lastName,
+      picture: picture,
+      description: description,
+      aboutMe: aboutMe,
+      city: city,
+      country: country,
+      balance: 0,
+      email: email,
+      supporters: [],
+    },
+    function () {
+      alert("signed up !");
+    }
+  );
 });

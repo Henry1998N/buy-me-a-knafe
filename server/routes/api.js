@@ -17,6 +17,7 @@ router.get("/grantee", function (req, res) {
     res.send(grantee);
   });
 });
+
 const getSupportersDonations = async function (id) {
   return Grantee.find({ _id: id })
     .populate("supporters")

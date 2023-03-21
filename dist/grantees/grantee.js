@@ -9,15 +9,13 @@ class Grantee {
 const KNAFEPRICE = 20;
 const renderer = new Renderer();
 
-$(".amount-form").on("click", ".btn", function () {
+$(".grantee-profile").on("click", ".amount-form .btn", function () {
   let amount = parseInt($(this).text()) || $(this).closest("input").val();
   $(".submit-btn").text(`Support ${amount * KNAFEPRICE}₪`);
 });
-$(".amount-form").on("change", "#donationamount", function () {
+$(".grantee-profile").on("input", ".amount-form .number-input", function () {
   let amount = $(this).val();
-  $(".submit-btn")
-    .empty()
-    .text(`Support ${amount * KNAFEPRICE}₪`);
+  $(".submit-btn").text(`Support ${amount * KNAFEPRICE}₪`);
 });
 
 const getIdFromUrl = function () {
@@ -28,7 +26,6 @@ const getIdFromUrl = function () {
 
 const getGrantee = function (id) {
   $.get(`/grantee?id=${id}`).then((grantee) => {
-    console.log(grantee);
     renderer.renderGrantee(grantee);
   });
 };

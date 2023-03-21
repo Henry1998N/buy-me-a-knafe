@@ -75,67 +75,6 @@
     <p>&copy; 2023 Buy Me A Knafeh</p>
   </footer>
 
-<!--
-    <div class="weather-app-container">
-        <form class="city-form">
-            <input type="text" placeholder="City" required />
-            <button type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </form>
-
-        <div class="cities"></div>
-
-        <script id="cities-template" type="text/x-handlebars-template">
-            {{#each cities}}
-                <div class="city-weather">
-
-                    <div class="city-name">
-                        <i class="location-icon fa-solid fa-location-dot"></i>
-                        <p>{{name}}</p>
-                    </div>
-
-                    <div class="city-controller" data-id={{id}}>
-                        {{#if isSaved}}
-                            <button class="delete-btn">
-                                <i class="delete-icon fa-solid fa-trash"></i>
-                            </button>
-                        {{else}}
-                            <button class="save-btn">
-                                <i class="save-icon fa-solid fa-floppy-disk"></i>
-                            </button>
-                        {{/if}}
-                    </div>
-
-                    <div class="humidity-container">
-                        <i class="humidity-icon fa-solid fa-water"></i>
-                        <div class="humidity">
-                            <p>{{humidity}}</p>
-                            <small>Humidity</small>
-                        </div>
-                    </div>
-
-                    <div class="wind-speed-container">
-                        <i class="wind-speed-icon fa-solid fa-wind"></i>
-                        <div class="wind-speed">
-                            <p>{{windSpeed}}</p>
-                            <small>Wind Speed</small>
-                        </div>
-                    </div>
-
-                    <div class="city-data">
-                        <img class="weather-icon" src={{conditionPic}} alt="Condition Picture"/>
-                        <p class="temperature">{{temperature}}</p>
-                        <p class="condition">{{condition}}</p>
-
-
-                    </div>
-                </div>
-            {{/each}}
-        </script>
-    </div>
--->
-
 <script src="../utilites/apiManager.js"></script>
 <script src="../utilites/Renderer.js"></script>
 <script src="main.js"></script>

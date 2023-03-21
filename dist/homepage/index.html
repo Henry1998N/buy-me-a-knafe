@@ -64,7 +64,7 @@
 
     <script id="grantees-template" type="text/x-handlebars-template">
         {{#each grantees}}
-            <div class="grantee">
+            <div class="grantee" data-id={{_id}}>
                 <img src={{picture}} alt="Profile Picture"/>
                 <p class="name">{{firstName}} {{lastName}}</p>
                 <div class="about">{{aboutMe}}</div>

@@ -4,16 +4,35 @@ let grantees = [];
 
 const savedGrantee = [];
 
+let isLoggedIn = false;
+
 function ToggleLogin() {
   isLoggedIn = !isLoggedIn;
   if (isLoggedIn === false) {
     $(".grantees .grantee .save-icon").css("visibility", "hidden");
     $(".navigation-bar .saved-icon").css("visibility", "hidden");
+
+    $(".navigation-bar .login-btn").css("visibility", "visible");
+    $(".navigation-bar .signup-btn").text("Sign Up");
   } else {
     $(".grantees .grantee .save-icon").css("visibility", "visible");
     $(".navigation-bar .saved-icon").css("visibility", "visible");
+
+    $(".navigation-bar .login-btn").css("visibility", "hidden");
+    $(".navigation-bar .signup-btn").text("Log out");
   }
 }
+
+$(".navigation-bar .signup-btn").on("click", function () {
+  if (isLoggedIn) {
+    ToggleLogin();
+    localStorage.clear();
+    location.reload();
+    return;
+  }
+
+  window.location.href = "/sign-up/sign-up.html";
+});
 
 async function topgranteed() {
   let topgranteed = await $.get("/topgranteed?limit=3");
@@ -28,8 +47,8 @@ async function onPageLoad() {
   grantees = granteesFetched.map((grantee) => {
     return { ...grantee, isSaved: false };
   });
-  renderer.renderGrantees(grantees);
 
+  renderer.renderGrantees(grantees);
   let topGrandeed = await topgranteed();
   renderer.renderTopGrandeed(topGrandeed);
 }

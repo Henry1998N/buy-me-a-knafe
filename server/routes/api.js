@@ -13,19 +13,29 @@ router.get("/grantees", function (req, res) {
 
 router.post("/signUp", async function (req, res) {
   let newGrantee = req.body;
-  let g1 = new Grantee({
-    firstName: newGrantee.firstName,
-    lastName: newGrantee.lastName,
-    picture: newGrantee.picture,
-    description: newGrantee.description,
-    aboutMe: newGrantee.aboutMe,
-    city: newGrantee.city,
-    country: newGrantee.country,
-    balance: 0,
-    email: newGrantee.email,
-    supporters: [],
+  Grantee.findOne({ email: newGrantee.email }, (err, user) => {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    if (user) {
+      console.log("Email already exists")
+      return res.status(400).send({ message: "Email already exists" });
+    }
+    let g1 = new Grantee({
+      firstName: newGrantee.firstName,
+      lastName: newGrantee.lastName,
+      picture: newGrantee.picture,
+      description: newGrantee.description,
+      aboutMe: newGrantee.aboutMe,
+      city: newGrantee.city,
+      country: newGrantee.country,
+      balance: 0,
+      email: newGrantee.email,
+      supporters: [],
+    });
+    g1.save();
   });
-  g1.save();
+ 
 });
 
 router.get("/grantee", function (req, res) {

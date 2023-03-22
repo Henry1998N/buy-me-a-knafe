@@ -15,6 +15,7 @@ const granteeSchema = new Schema({
   supporters: [{ type: Schema.Types.ObjectId, ref: "Supporter" }],
   password: String,
   quote: String,
+  favorite: [{ type: Schema.Types.ObjectId, ref: "Grantee" }],
 });
 
 const Grantee = mongoose.model("Grantee", granteeSchema);

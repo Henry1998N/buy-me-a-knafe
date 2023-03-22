@@ -100,6 +100,12 @@ var padding = {top:20, right:40, bottom:0, left:0},
                         .text(` You choose ${data[picked].firstName + " " + data[picked].lastName} to donate`)
                     d3.select("#question img")
                         .attr("src" , data[picked].picture)
+                    d3.select("#question img")  
+                        .attr("data-id", data[picked].id)
+                    d3.select("#question a")
+                        .text("move to profile")
+                    d3.select("#question a i")
+                        .text("arrow_forward")
                     oldrotation = rotation;
                     console.log(data[picked].firstName)
               
@@ -161,3 +167,9 @@ var padding = {top:20, right:40, bottom:0, left:0},
         //     console.log(grantees)
         //     return grantees
         //   }
+
+        $(".question").on("click", "img", function(){
+            const id = $(this).data.id();
+            console.log(id)
+            window.location.href = `/grantees/grantee-page.html?id=${id}`;
+        })

@@ -17,6 +17,20 @@ const getUsers = function () {
     return users;
   });
 };
+
+const getQuote = function () {
+  return axios.get("https://api.kanye.rest/").then((quote) => {
+    let data = quote.data;
+    return data;
+  });
+};
+
+router.get("/getQuote", function (req, res) {
+  getQuote().then((quote) => {
+    res.send(quote);
+  });
+});
+
 const getAboutMeSection = async function () {
   return axios
     .get(
@@ -38,6 +52,8 @@ const saveGrantees = function (grantees) {
       balance: 0,
       email: element.email,
       supporters: [],
+      password: "pass123$",
+      quote: element.quote,
     });
     newGrante.save();
   });
@@ -48,6 +64,8 @@ router.get("/users", function (req, res) {
       for (let i = 0; i < 7; i++) {
         let section = await getAboutMeSection();
         users[i].aboutme = section;
+        let quote = await getQuote();
+        users[i].quote = quote.quote;
       }
       return users;
     })

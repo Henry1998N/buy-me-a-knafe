@@ -1,5 +1,3 @@
-const { logger } = require("handlebars");
-
 class Grantee {
   constructor(id, link, title, description) {
     this.id = id;
@@ -50,7 +48,7 @@ const getSupporterDetails = function () {
   return newSupporter;
 };
 const castAmount = function (text) {
-  let amount = textext.slice(text.indexOf(" "), text.length - 1);
+  let amount = text.slice(text.indexOf(" "), text.length - 1);
   amount = parseInt(amount);
   return amount;
 };

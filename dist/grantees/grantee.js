@@ -1,3 +1,5 @@
+const { logger } = require("handlebars");
+
 class Grantee {
   constructor(id, link, title, description) {
     this.id = id;
@@ -8,7 +10,7 @@ class Grantee {
 }
 const KNAFEPRICE = 20;
 const renderer = new Renderer();
-const supporters = []
+const supporters = [];
 
 $(".grantee-profile").on("click", ".amount-form .btn", function () {
   let amount = parseInt($(this).text()) || $(this).closest("input").val();
@@ -27,16 +29,19 @@ const getIdFromUrl = function () {
 
 const getGrantee = function (id) {
   $.get(`/grantee?id=${id}`).then((grantee) => {
-    renderer.renderGrantee(grantee)
-    $.get("/supporters?granteeId=" + id).then(supporters => {
-
-      renderer.renderSupporters(supporters.map(supporter => {
-        return {...supporter, date: new Date(supporter.date).toLocaleString()}
-      }))
-    })
-  })
-}
-
+    renderer.renderGrantee(grantee);
+    $.get("/supporters?granteeId=" + id).then((supporters) => {
+      renderer.renderSupporters(
+        supporters.map((supporter) => {
+          return {
+            ...supporter,
+            date: new Date(supporter.date).toLocaleString(),
+          };
+        })
+      );
+    });
+  });
+};
 
 const getSupporterDetails = function () {
   let name = $("#supporterName").val();
@@ -44,35 +49,12 @@ const getSupporterDetails = function () {
   let newSupporter = { name, message };
   return newSupporter;
 };
-$(".grantee-profile").on("click", "#supportBtn", function () {
-  let name;
-  let message;
-  let granteeId = getIdFromUrl();
-  let supportText = $(this).text();
-  let amount = supportText.slice(
-    supportText.indexOf(" "),
-    supportText.length - 1
-  );
+const castAmount = function (text) {
+  let amount = textext.slice(text.indexOf(" "), text.length - 1);
   amount = parseInt(amount);
-
-  if (amount === 0) {
-    alert("Choose Amount.");
-    return;
-  }
-  let newSupporter = getSupporterDetails();
-  if (newSupporter.name == "") {
-    name = "Someone";
-  } else {
-    name = newSupporter.name;
-  }
-  if (newSupporter.message == "") {
-    message = `${newSupporter.name} has nothing to say`;
-  } else {
-    message = newSupporter.message;
-  }
-  newSupporter.amount = amount;
-  let picture =
-    "https://static.vecteezy.com/system/resources/previews/007/296/443/original/user-icon-person-icon-client-symbol-profile-icon-vector.jpg";
+  return amount;
+};
+const saveSupporter = function (name, message, amount, picture, granteeId) {
   $.post(`/supporter?granteeId=${granteeId}`, {
     name: name,
     message: message,
@@ -86,5 +68,22 @@ $(".grantee-profile").on("click", "#supportBtn", function () {
     .catch((err) => {
       console.log(err);
     });
+};
+$(".grantee-profile").on("click", "#supportBtn", function () {
+  let messageText = $("#SupporterMessage").val();
+  let nameInputText = $("#supporterName").val();
+  let name = nameInputText.length > 0 ? nameInputText : "Someone";
+  let message =
+    messageText.length > 0 ? messageText : `${name} has nothing to say`;
+  let granteeId = getIdFromUrl();
+  let picture =
+    "https://static.vecteezy.com/system/resources/previews/007/296/443/original/user-icon-person-icon-client-symbol-profile-icon-vector.jpg";
+  let supportText = $(this).text();
+  let amount = castAmount(supportText);
+  if (amount === 0) {
+    alert("Choose Amount.");
+    return;
+  }
+  saveSupporter(name, message, amount, picture, granteeId);
 });
 getGrantee(getIdFromUrl());

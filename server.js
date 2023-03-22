@@ -3,7 +3,6 @@ const app = express();
 const api = require("./server/routes/granteesApi");
 const loginApi = require("./server/routes/loginApi");
 const path = require("path");
-const testApi = require("./server/routes/testApi");
 const middleWares = require("./server/utils/middleWareFunc");
 const mongoose = require("mongoose");
 mongoose
@@ -23,7 +22,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/", api);
-app.use("/test", testApi);
 app.use("/users", loginApi);
 
 app.get("/granteeProfile", middleWares.authenticateUser, (req, res) => {

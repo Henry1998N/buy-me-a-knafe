@@ -1,26 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Quicksand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Quicksand&display=swap");
 
-:root{
+:root {
   --knafeh-color: #ff8f00;
   --knafeh-color-light: #ffe082;
 }
 
-body{
+body {
   background-color: var(--knafeh-color-light);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.sign-up-form-container{
-  font-family: 'Quicksand', sans-serif;
+.sign-up-form-container {
+  font-family: "Quicksand", sans-serif;
   padding: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.sign-up-form{
+.sign-up-form {
   width: 500px;
   background-color: white;
   border-radius: 10px;
@@ -30,8 +30,8 @@ body{
   gap: 5px;
 }
 
-.sign-up-form .btn{
-  font-family: 'Quicksand', sans-serif;
+.sign-up-form .btn {
+  font-family: "Quicksand", sans-serif;
   background-color: var(--knafeh-color);
   font-size: 1.25rem;
   color: white;
@@ -41,14 +41,15 @@ body{
   border-radius: 2rem;
   border: none;
 }
-.sign-up-form .btn:hover{
+.sign-up-form .btn:hover {
   cursor: pointer;
   transform: scale(1.05);
   transition-duration: 200ms;
 }
 
-.sign-up-form input,.sign-up-form textarea{
-  font-family: 'Quicksand', sans-serif;
+.sign-up-form input,
+.sign-up-form textarea {
+  font-family: "Quicksand", sans-serif;
   padding: 15px;
   font-size: 1.15rem;
   border: 3px solid black;
@@ -58,12 +59,12 @@ body{
   background-color: white;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
 }
-.sign-up-form textarea{
+.sign-up-form textarea {
   height: 100px;
   resize: none;
 }
-.sign-up-form input:focus, .sign-up-form textarea:focus{
+.sign-up-form input:focus,
+.sign-up-form textarea:focus {
   outline: none;
   border: 3px solid var(--knafeh-color);
 }
-/* ---- Create recipience form ---- */

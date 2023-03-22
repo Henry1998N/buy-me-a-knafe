@@ -40,18 +40,12 @@
     <script id="saved-grantees-template" type="text/x-handlebars-template">
         {{#each grantees}}
             <div class="grantee saved-grantee" data-id={{_id}}>
-                <!-- {{#if isSaved}}
-                    <i class="save-icon save-icon-active fa-solid fa-heart"></i>
-                {{else}}
-                    <i class="save-icon fa-regular fa-heart"></i>
-                {{/if}} -->
                 <img src={{picture}} alt="Profile Picture"/>
                 <p class="name">{{firstName}} {{lastName}}</p>
                 <div class="about">About Me:<br>{{quote}}</div>
             </div>
         {{/each}}
     </script>
-
 
     <div class="about-container">
         <h1 class="about-header">Supporting each other is crucial for personal and collective growth.</h1>
@@ -68,8 +62,6 @@
         </p>
     </div>
   
-    
-
     <div class="container">
        
         <div style="position:absolute; top: 100px; right: 10px; " class="topgranteed"></div>
@@ -115,6 +107,4 @@
 <script src="../sign-in/sign-in.js"></script>
 
 </body>
-
-
 </html>

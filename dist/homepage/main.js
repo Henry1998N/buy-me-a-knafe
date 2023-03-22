@@ -15,13 +15,19 @@ const isGranteeLoggedIn = function () {
 let isLoggedIn = isGranteeLoggedIn();
 
 // if (isLoggedIn) {
+//   $(".navigation-bar .saved-icon").addClass("visible");
 //   $(".grantees .grantee .save-icon").css("visibility", "visible");
-//   $(".navigation-bar .saved-icon").css("visibility", "visible");
 //   $(".navigation-bar .login-btn").css("visibility", "hidden");
 //   $(".navigation-bar .signup-btn").text("Log out");
+// } else {
+//   $(".grantees .grantee .save-icon").css("visibility", "hidden");
+//   $(".navigation-bar .saved-icon").css("visibility", "hidden");
+
+//   $(".navigation-bar .login-btn").css("visibility", "visible");
+//   $(".navigation-bar .signup-btn").text("Sign Up");
 // }
 
-function ToggleLogin() {
+function ToggleLogin(isLoggedIn) {
   // isLoggedIn = !isLoggedIn;
   if (isLoggedIn === false) {
     $(".grantees .grantee .save-icon").css("visibility", "hidden");
@@ -36,12 +42,12 @@ function ToggleLogin() {
     $(".navigation-bar .signup-btn").text("Log out");
   }
 }
-ToggleLogin();
+ToggleLogin(isLoggedIn);
 $(".navigation-bar .signup-btn").on("click", function () {
   if (isLoggedIn) {
     ToggleLogin();
     localStorage.clear();
-    location.reload();
+    location.href = `/homepage/index.html`;
     return;
   }
 

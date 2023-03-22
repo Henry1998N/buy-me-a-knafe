@@ -148,11 +148,11 @@ $("form.recipience-form").on("submit", function (event) {
   $(this)[0][3].value = "";
 });
 
-// const spin = function () {
-//   const url = window.location.href;
-//   const id = url.slice(url.indexOf("=") + 1);
-//   window.location.href = `/wheel/wheel.html?id=${id}`;
-// };
+const spin = function () {
+  const url = window.location.href;
+  const id = url.slice(url.indexOf("=") + 1);
+  window.location.href = `/wheel/wheel.html?id=${id}`;
+};
 
 $("#btn").on("click", function () {
   window.location.href = "/homepage/wheel.html";

@@ -4,45 +4,42 @@ let grantees = [];
 
 const savedGrantee = [];
 
-let isLoggedIn = false
+let isLoggedIn = false;
 
-function ToggleLogin(){
-  isLoggedIn = !isLoggedIn
-  if(isLoggedIn === false){
+function ToggleLogin() {
+  isLoggedIn = !isLoggedIn;
+  if (isLoggedIn === false) {
     $(".grantees .grantee .save-icon").css("visibility", "hidden");
     $(".navigation-bar .saved-icon").css("visibility", "hidden");
 
     $(".navigation-bar .login-btn").css("visibility", "visible");
-    $(".navigation-bar .signup-btn").text("Sign Up")
-  }
-  else{
+    $(".navigation-bar .signup-btn").text("Sign Up");
+  } else {
     $(".grantees .grantee .save-icon").css("visibility", "visible");
     $(".navigation-bar .saved-icon").css("visibility", "visible");
 
     $(".navigation-bar .login-btn").css("visibility", "hidden");
-    $(".navigation-bar .signup-btn").text("Log out")
+    $(".navigation-bar .signup-btn").text("Log out");
   }
 }
 
-
 $(".navigation-bar .signup-btn").on("click", function () {
-  if(isLoggedIn){
-    ToggleLogin()
-    localStorage.clear()
-    location.reload()
-    return
+  if (isLoggedIn) {
+    ToggleLogin();
+    localStorage.clear();
+    location.reload();
+    return;
   }
 
   window.location.href = "/sign-up/sign-up.html";
 });
-
 
 async function topgranteed() {
   let topgranteed = await $.get("/topgranteed?limit=3");
   return topgranteed;
 }
 async function fetchGrantees() {
-  return $.get("/grantees")
+  return $.get("/grantees");
 }
 
 async function onPageLoad() {
@@ -53,9 +50,14 @@ async function onPageLoad() {
 
   renderer.renderGrantees(grantees);
   let topGrandeed = await topgranteed();
-  renderer.renderTopGrandeed(topGrandeed);
+  let checkedTopGrandeed = [];
+  topGrandeed.forEach((grandee) => {
+    if (grandee.supporters.length > 0) {
+      checkedTopGrandeed.push(grandee);
+    }
+  });
 
-
+  renderer.renderTopGrandeed(checkedTopGrandeed);
 }
 $(".buttons").on("click", ".login-btn", function () {
   window.location.href = `/sign-in/sign-in.html`;
@@ -89,6 +91,7 @@ $(".grantees").on("click", ".grantee .save-icon", function () {
 
 $(".saved-grantees").on("click", ".saved-grantee .save-icon", function () {
   const id = $(this).parent().data().id;
+  savedGrantee.push(...savedGrantees);
   toggleGranteeIsSaved(id);
   renderer.renderGrantees(grantees);
   const savedGrantees = grantees.filter((grantee) => grantee.isSaved === true);

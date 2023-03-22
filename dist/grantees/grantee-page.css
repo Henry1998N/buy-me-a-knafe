@@ -6,9 +6,6 @@
 body {
     letter-spacing: 1px;
     word-spacing: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 
@@ -17,7 +14,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    box-shadow: 0 0 5px 5px var(--knafeh-color-light);
+    box-shadow: 0 0 5px 1px var(--knafeh-color);
     border-radius: 0 0 5px 5px;
 }
 .knafeh-icon{
@@ -248,5 +245,27 @@ footer{
 
 
 .supporters{
+    padding: 30px 0 60px 0;
+    width: 80%;
     margin-top: 600px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.supporter{
+    background-color: var(--knafeh-color-light);
+    border: 2px solid var(--knafeh-color);
+    border-radius: 5px;
+    font-weight: bold;
+    width: max-content;
+    padding: 0 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.supporter .supporter-icon{
+    color: var(--knafeh-color);
+    font-size: 50px;
 }

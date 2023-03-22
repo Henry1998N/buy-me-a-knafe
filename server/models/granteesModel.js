@@ -17,7 +17,5 @@ const granteeSchema = new Schema({
   quote: String,
   favorite: [{ type: Schema.Types.ObjectId, ref: "Grantee" }],
 });
-
 const Grantee = mongoose.model("Grantee", granteeSchema);
-
 module.exports = Grantee;

@@ -2,7 +2,6 @@ const renderer = new Renderer();
 //const apiManager = new APIManager();
 let recipiences = [];
 
-
 async function fetchGrantees() {
   return $.get("/grantees");
 }
@@ -12,6 +11,9 @@ async function onPageLoad() {
   console.log(grantees);
   renderer.renderGrantees(grantees);
 }
+$(".buttons").on("click", ".login-btn", function () {
+  window.location.href = `/sign-in/sign-in.html`;
+});
 
 onPageLoad();
 

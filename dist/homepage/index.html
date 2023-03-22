@@ -40,11 +40,11 @@
     <script id="saved-grantees-template" type="text/x-handlebars-template">
         {{#each grantees}}
             <div class="grantee saved-grantee" data-id={{_id}}>
-                {{#if isSaved}}
+                <!-- {{#if isSaved}}
                     <i class="save-icon save-icon-active fa-solid fa-heart"></i>
                 {{else}}
                     <i class="save-icon fa-regular fa-heart"></i>
-                {{/if}}
+                {{/if}} -->
                 <img src={{picture}} alt="Profile Picture"/>
                 <p class="name">{{firstName}} {{lastName}}</p>
                 <div class="about">About Me:<br>{{quote}}</div>

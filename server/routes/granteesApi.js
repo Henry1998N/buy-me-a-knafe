@@ -6,6 +6,9 @@ const Grantee = require("../models/granteesModel");
 const supporterFun = require("../utils/supporterFunc");
 const balanceFunc = require("../utils/balanceFunc");
 const granteeFunc = require("../utils/granteeFunc");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+const salt = bcrypt.genSaltSync(saltRounds);
 const { log } = require("handlebars");
 
 router.get("/grantees", function (req, res) {
@@ -32,8 +35,8 @@ router.post("/signUp", async function (req, res) {
         balance: 0,
         email: newGrantee.email,
         supporters: [],
-        password: newGrantee.password,
         quote: newGrantee.quote,
+        password: bcrypt.hashSync(newGrantee.password, salt),
       });
       g1.save();
     }

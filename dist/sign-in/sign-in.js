@@ -2,11 +2,11 @@
 //   window.location.href = "/sign-in/sign-in.html";
 // });
 
-// $(".container").on("click", ".cancelbutton", function () {
-//   window.location.href = "/homepage/index.html";
-// });
+$(".sign-in-form").on("click", ".cancelbutton", function () {
+  window.location.href = "/homepage/index.html";
+});
 
-$(".container").on("click", "#loginBtn", function () {
+$(".sign-in-form").on("click", "#loginBtn", function () {
   const email = $("#emailInput").val();
   const password = $("#passwordInput").val();
   $.ajax({

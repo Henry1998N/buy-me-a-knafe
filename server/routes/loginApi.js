@@ -10,7 +10,7 @@ router.post("/login", function (req, res) {
   const users = [
     { email: "henry@gmail.com", password: bcrypt.hashSync("123", salt) },
   ];
-  if (loginFunctions.authenticateUser(users, email, password)) {
+  if (loginFunctions.validateUser(users, email, password)) {
     const jwt = loginFunctions.generateToken(email);
     res.status(200).json({ token: jwt });
   } else {

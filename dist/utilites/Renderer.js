@@ -14,4 +14,8 @@ class Renderer {
   renderGrantee(grantee) {
     this.handleBarHelper("#grantee-template", grantee, ".grantee-profile");
   }
+
+  renderSupporters(supporters) {
+    this.handleBarHelper("#supporters-template", {supporters}, ".supporters");
+  }
 }

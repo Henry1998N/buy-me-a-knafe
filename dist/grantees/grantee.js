@@ -22,6 +22,7 @@ const homePage = function () {
   window.location.href = `/homepage/index.html`;
 };
 
+const done = "finallyDone !";
 const getIdFromUrl = function () {
   const url = window.location.href;
   const id = url.slice(url.indexOf("=") + 1);

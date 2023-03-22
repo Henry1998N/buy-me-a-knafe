@@ -59,7 +59,7 @@
     </div>
     -->
 
-
+    <h1 class="grantees-header">Our Top Grantees</h1>
     <div class="grantees"></div>
 
     <script id="grantees-template" type="text/x-handlebars-template">
@@ -67,7 +67,8 @@
             <div class="grantee" data-id={{_id}}>
                 <img src={{picture}} alt="Profile Picture"/>
                 <p class="name">{{firstName}} {{lastName}}</p>
-                <div class="about">{{aboutMe}}</div>
+
+                <div class="about">About Me:<br>{{aboutMe}}</div>
             </div>
         {{/each}}
     

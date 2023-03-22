@@ -1,77 +1,69 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-* {
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Quicksand&display=swap');
+
+:root{
+  --knafeh-color: #ff8f00;
+  --knafeh-color-light: #ffe082;
 }
 
-/* Full-width input fields */
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
+body{
+  background-color: var(--knafeh-color-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
-  background-color: #ddd;
-  outline: none;
+.sign-up-form-container{
+  font-family: 'Quicksand', sans-serif;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+.sign-up-form{
+  width: 500px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
 
-/* Set a style for all buttons */
-button {
-  background-color: #04aa6d;
+.sign-up-form .btn{
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--knafeh-color);
+  font-size: 1.25rem;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 2rem;
   border: none;
+}
+.sign-up-form .btn:hover{
   cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
+  transform: scale(1.05);
+  transition-duration: 200ms;
 }
 
-button:hover {
-  opacity: 1;
+.sign-up-form input,.sign-up-form textarea{
+  font-family: 'Quicksand', sans-serif;
+  padding: 15px;
+  font-size: 1.15rem;
+  border: 3px solid black;
+  border-radius: 5px;
+  font-size: 1.1em;
+  width: 60%;
+  background-color: white;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
 }
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
+.sign-up-form textarea{
+  height: 100px;
+  resize: none;
 }
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn,
-.signupbtn {
-  float: left;
-  width: 50%;
+.sign-up-form input:focus, .sign-up-form textarea:focus{
+  outline: none;
+  border: 3px solid var(--knafeh-color);
 }
-
-/* Add padding to container elements */
-.container {
-  padding: 16px;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn,
-  .signupbtn {
-    width: 100%;
-  }
-}
+/* ---- Create recipience form ---- */

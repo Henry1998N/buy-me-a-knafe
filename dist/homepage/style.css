@@ -121,60 +121,6 @@ footer{
 
 
 
-/* ---- Create recipience form ---- */
-.create-recipience-bar{
-    width: 100%;
-    padding: 20px 15px;
-}
-.recipience-form .input-container{
-    display: flex;
-}
-.recipience-form .input-container p{
-    font-size: 1.15rem;
-    font-weight: bold;
-}
-.recipience-form .input-container input{
-    font-family: 'Quicksand', sans-serif;
-    font-weight: bold;
-    font-size: 1.15rem;
-    border: none;
-}
-.recipience-form .input-container input:focus{
-    outline: none;
-}
-.recipience-form .btn{
-    background-color: var(--knafeh-color);
-    font-size: 1.15rem;
-}
-
-
-.recipience-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-}
-
-.recipience-form > input,.recipience-form textarea{
-    font-family: 'Quicksand', sans-serif;
-    padding: 15px;
-    font-size: 1.15rem;
-    border: 2px solid black;
-    border-radius: 5px;
-    font-size: 1.1em;
-    width: 60%;
-    background-color: white;
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
-}
-.recipience-form textarea{
-    height: 100px;
-    resize: none;
-}
-.recipience-form > input:focus, .recipience-form textarea:focus{
-    outline: none;
-    border: 2px solid var(--knafeh-color);
-}
-/* ---- Create recipience form ---- */
 
 
 

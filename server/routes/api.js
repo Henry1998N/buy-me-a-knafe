@@ -71,4 +71,12 @@ router.get("/supporters", function (req, res) {
     });
 });
 
+router.get("/topgranteed", async (req, res) => {
+  limit = parseInt(req.query.limit);
+  const topGrantees = await Grantee.find()
+    .sort({ supporters: -1 })
+    .limit(limit);
+  res.send(topGrantees);
+});
+
 module.exports = router;

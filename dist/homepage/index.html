@@ -19,6 +19,7 @@
 
 <body>
 
+
     <div class="bar navigation-bar">
         <img class="knafeh-icon" src="https://i.pinimg.com/originals/5e/6f/b2/5e6fb2231a619cdc3770518ec0e8e7c7.jpg"/>
         <div class="buttons">
@@ -41,7 +42,8 @@
             <br/>
         </p>
     </div>
-
+  
+    
     <!--
     <div class="create-page-container">
         <form class="recipience-form">
@@ -58,6 +60,19 @@
         </form>
     </div>
     -->
+    <div class="container">
+       
+        <div style="position:absolute; top: 100px; right: 10px; " class="topgranteed"></div>
+    </div>
+    <script id="topgranteed-template" type="text/x-handlebars-template">
+        <h3 style="text-align: center;">Top 3 Grantees</h3>
+        {{#each topGrandeed}}
+        <div style="width: 140px ; height: 150px; margin: 10px 0 ; " class="grantee" data-id={{_id}}>
+            <img style="width: 70px;height: 70px; margin-bottom: 0; " src={{picture}} alt="Profile Picture"/>
+            <p style="text-align: center;" class="name">{{firstName}} {{lastName}}</p>
+        </div>
+    {{/each}}
+    </script>
 
     <h1 class="grantees-header">Our Top Grantees</h1>
     <div class="grantees"></div>
@@ -136,6 +151,8 @@
         </script>
     </div>
 -->
+
+
 <script src="../utilites/apiManager.js"></script>
 <script src="../utilites/Renderer.js"></script>
 <script src="main.js"></script>

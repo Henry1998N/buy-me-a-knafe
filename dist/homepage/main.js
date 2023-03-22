@@ -93,6 +93,11 @@ function toggleGranteeIsSaved(id) {
 $(".grantees").on("click", ".grantee .save-icon", function () {
   const id = $(this).parent().data().id;
   toggleGranteeIsSaved(id);
+  const url = window.location.href;
+  const granteeId = url.slice(url.indexOf("=") + 1);
+  $.post(`/favoriteGrantees/${granteeId}`, { id }).then(() => {
+    alert("added");
+  });
   renderer.renderGrantees(grantees);
   ToggleLogin(isLoggedIn);
 });

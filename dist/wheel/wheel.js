@@ -10,22 +10,9 @@ var padding = { top: 20, right: 40, bottom: 0, left: 0 },
   color = d3.scale.category20(); //category20c()
 
 // let grantees = getGrantees();
-console.log(savedGrantee);
+// $.get("/getAllFavorites/:id")
 
 const data = [];
-for (let i = 0; i < savedGrantee.length; i++) {
-  let id = savedGrantee[i].id;
-  let firstName = savedGrantee[i].firstName;
-  let lastName = savedGrantee[i].lastName;
-  let picture = savedGrantee[i].picture;
-  let obj = {
-    _id: id,
-    firstName: firstName,
-    lastName: lastName,
-    picture: picture,
-  };
-  data.push(obj);
-}
 
 // data.push(...grantees)
 var svg = d3

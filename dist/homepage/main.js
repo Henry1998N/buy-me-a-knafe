@@ -14,21 +14,7 @@ const isGranteeLoggedIn = function () {
 };
 let isLoggedIn = isGranteeLoggedIn();
 
-// if (isLoggedIn) {
-//   $(".navigation-bar .saved-icon").addClass("visible");
-//   $(".grantees .grantee .save-icon").css("visibility", "visible");
-//   $(".navigation-bar .login-btn").css("visibility", "hidden");
-//   $(".navigation-bar .signup-btn").text("Log out");
-// } else {
-//   $(".grantees .grantee .save-icon").css("visibility", "hidden");
-//   $(".navigation-bar .saved-icon").css("visibility", "hidden");
-
-//   $(".navigation-bar .login-btn").css("visibility", "visible");
-//   $(".navigation-bar .signup-btn").text("Sign Up");
-// }
-
 function ToggleLogin(isLoggedIn) {
-  // isLoggedIn = !isLoggedIn;
   if (isLoggedIn === false) {
     $(".grantees .grantee .save-icon").css("visibility", "hidden");
     $(".navigation-bar .saved-icon").css("visibility", "hidden");
@@ -42,7 +28,6 @@ function ToggleLogin(isLoggedIn) {
     $(".navigation-bar .signup-btn").text("Log out");
   }
 }
-ToggleLogin(isLoggedIn);
 $(".navigation-bar .signup-btn").on("click", function () {
   if (isLoggedIn) {
     ToggleLogin();
@@ -69,6 +54,8 @@ async function onPageLoad() {
   });
 
   renderer.renderGrantees(grantees);
+  ToggleLogin(isLoggedIn);
+
   let topGrandeed = await topgranteed();
   let checkedTopGrandeed = [];
   topGrandeed.forEach((grandee) => {
@@ -158,5 +145,3 @@ $("form.recipience-form").on("submit", function (event) {
 $("#btn").on("click", function () {
   window.location.href = "/homepage/wheel.html";
 });
-
-// console.log(savedGrantee)

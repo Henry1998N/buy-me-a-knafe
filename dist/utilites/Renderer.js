@@ -15,7 +15,11 @@ class Renderer {
     this.handleBarHelper("#grantee-template", grantee, ".grantee-profile");
   }
   renderSavedGrantees(grantees) {
-    this.handleBarHelper("#saved-grantees-template", { grantees }, ".saved-grantees");
+    this.handleBarHelper(
+      "#saved-grantees-template",
+      { grantees },
+      ".saved-grantees"
+    );
   }
   renderSupporters(supporters) {
     this.handleBarHelper("#supporters-template", { supporters }, ".supporters");
@@ -25,6 +29,13 @@ class Renderer {
       "#topgranteed-template",
       { topGrandeed },
       ".topgranteed"
+    );
+  }
+  renderGranteeProfile(grantee) {
+    this.handleBarHelper(
+      "#granteeProfile-template",
+      grantee,
+      ".grantee-Profile"
     );
   }
 }

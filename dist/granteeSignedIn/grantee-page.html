@@ -31,10 +31,10 @@
     </div>
 
     <div class="grantee-profile-container">
-      <div class="grantee-profile"></div>
+      <div class="grantee-Profile"></div>
     </div>
 
-    <script id="grantee-template" type="text/x-handlebars-template">
+    <script id="granteeProfile-template" type="text/x-handlebars-template">
       <div class="profile-background"></div>
       <p class="header header-text">Profile</p>
       <div class="email header-text">{{email}}</div>
@@ -61,22 +61,8 @@
             {{city}},
             {{country}}</div>
         </div>
+        <h2>Balance{{balance}}</h2>
       </div>
-    </script>
-
-    <div class="supporters"></div>
-
-    <script id="supporters-template" type="text/x-handlebars-template">
-      {{#each supporters}}
-        <div class="supporter">
-          <i class="supporter-icon fa-solid fa-circle-user"></i>
-          <div class="text">
-            <p>{{amount}}₪ Recieved From {{name}}</p>
-            <p> - "{{message}}"</p>
-            <small>At {{date}}</small>
-          </div>
-        </div>
-      {{/each}}
     </script>
 
     <footer>

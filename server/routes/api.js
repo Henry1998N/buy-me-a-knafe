@@ -5,6 +5,7 @@ const Supporter = require("../models/supporterModel");
 const Grantee = require("../models/granteesModel");
 const supporterFun = require('../utils/supporterFunc')
 const balanceFunc = require('../utils/balanceFunc');
+const granteeFunc = require('../utils/granteeFunc');
 const { log } = require("handlebars");
 
 router.get("/grantees", function (req, res) {
@@ -15,14 +16,11 @@ router.get("/grantees", function (req, res) {
 
 router.post("/signUp", async function (req, res) {
   let newGrantee = req.body;
-  Grantee.findOne({ email: newGrantee.email }, (err, user) => {
-    if (err) {
-      return res.status(500).send(err);
-    }
-    if (user) {
-      console.log("Email already exists")
-      return res.status(400).send({ message: "Email already exists" });
-    }
+  granteeFunc.isGranteeExist(newGrantee.email).then(function (isExist){
+    if (isExist) {
+      console.log("Grantee already exists");
+      res.status(400).send({message: "Exist"})
+  }else{
     let g1 = new Grantee({
       firstName: newGrantee.firstName,
       lastName: newGrantee.lastName,
@@ -36,10 +34,10 @@ router.post("/signUp", async function (req, res) {
       supporters: [],
     });
     g1.save();
+  }
+})
   });
  
-});
-
 router.get("/grantee", function (req, res) {
   let id = req.query.id;
   Grantee.findById({ _id: id }).then((grantee) => {
@@ -47,14 +45,6 @@ router.get("/grantee", function (req, res) {
   });
 });
 
-
-const updateGranteeBalance = function (granteeId, granteeBalance) {
-  return Grantee.findByIdAndUpdate(granteeId, { balance: granteeBalance }).then(
-    () => {
-      return "updated";
-    }
-  );
-};
 router.post("/supporter", async function (req, res) {
   const granteeId = req.query.granteeId;
   const supporter = req.body;

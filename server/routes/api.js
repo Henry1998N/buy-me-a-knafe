@@ -26,6 +26,7 @@ router.post("/signUp", async function (req, res) {
     balance: 0,
     email: newGrantee.email,
     supporters: [],
+    password: newGrantee.password,
   });
   g1.save();
 });

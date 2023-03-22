@@ -15,6 +15,7 @@ $("form.sign-up-form").on("submit", function () {
   let city = $(".cityInput").val();
   let country = $(".countryInput").val();
   let email = $(".emailInput").val();
+  let password = $(".passwordInput").val();
 
   $.post(
     "/signUp",
@@ -28,6 +29,7 @@ $("form.sign-up-form").on("submit", function () {
       country: country,
       balance: 0,
       email: email,
+      password: password,
       supporters: [],
     },
     function () {}

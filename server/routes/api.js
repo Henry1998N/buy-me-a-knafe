@@ -3,8 +3,8 @@ const router = express.Router();
 const axios = require("axios");
 const Supporter = require("../models/supporterModel");
 const Grantee = require("../models/granteesModel");
-const supporterFun = require('../utils/supporterFunc')
-const balanceFunc = require('../utils/balanceFunc');
+const supporterFun = require("../utils/supporterFunc");
+const balanceFunc = require("../utils/balanceFunc");
 const { log } = require("handlebars");
 
 router.get("/grantees", function (req, res) {
@@ -37,7 +37,6 @@ router.get("/grantee", function (req, res) {
   });
 });
 
-
 const updateGranteeBalance = function (granteeId, granteeBalance) {
   return Grantee.findByIdAndUpdate(granteeId, { balance: granteeBalance }).then(
     () => {
@@ -54,7 +53,10 @@ router.post("/supporter", async function (req, res) {
     { $push: { supporters: newSupporter } }
   ).then(async () => {
     const granteeBalance = await supporterFun.getSupportersDonations(granteeId);
-    const message = await balanceFunc.updateGranteeBalance(granteeId, granteeBalance);
+    const message = await balanceFunc.updateGranteeBalance(
+      granteeId,
+      granteeBalance
+    );
     res.send({ message: message });
   });
 });
@@ -67,8 +69,5 @@ router.get("/supporters", function (req, res) {
       res.send(grantee.supporters);
     });
 });
-
-
-
 
 module.exports = router;

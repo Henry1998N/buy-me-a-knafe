@@ -34,7 +34,7 @@ class Renderer {
   renderGranteeProfile(grantee) {
     this.handleBarHelper(
       "#granteeProfile-template",
-      { grantee },
+      grantee,
       ".grantee-Profile"
     );
   }

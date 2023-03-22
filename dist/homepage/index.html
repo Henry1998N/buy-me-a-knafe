@@ -22,10 +22,34 @@
     <div class="bar navigation-bar">
         <img class="knafeh-icon" src="https://i.pinimg.com/originals/5e/6f/b2/5e6fb2231a619cdc3770518ec0e8e7c7.jpg"/>
         <div class="buttons">
+            <i class="saved-icon fa-solid fa-heart"></i>
             <button class="btn login-btn">Log In</button>
             <button class="btn signup-btn">Sign Up</button>
         </div>
     </div>
+    
+    <div class="saved-grantees-modal">
+
+        <div class="saved-grantees">
+            <i class="close-btn fa-solid fa-xmark"></i>
+        </div>
+    </div>
+
+    <script id="saved-grantees-template" type="text/x-handlebars-template">
+        {{#each grantees}}
+            <div class="grantee saved-grantee" data-id={{_id}}>
+                {{#if isSaved}}
+                    <i class="save-icon save-icon-active fa-solid fa-heart"></i>
+                {{else}}
+                    <i class="save-icon fa-regular fa-heart"></i>
+                {{/if}}
+                <img src={{picture}} alt="Profile Picture"/>
+                <p class="name">{{firstName}} {{lastName}}</p>
+                <div class="about">About Me:<br>{{aboutMe}}</div>
+            </div>
+        {{/each}}
+    </script>
+
 
     <div class="about-container">
         <h1 class="about-header">Supporting each other is crucial for personal and collective growth.</h1>
@@ -65,78 +89,24 @@
     <script id="grantees-template" type="text/x-handlebars-template">
         {{#each grantees}}
             <div class="grantee" data-id={{_id}}>
+                {{#if isSaved}}
+                    <i class="save-icon save-icon-active fa-solid fa-heart"></i>
+                {{else}}
+                    <i class="save-icon fa-regular fa-heart"></i>
+                {{/if}}
                 <img src={{picture}} alt="Profile Picture"/>
                 <p class="name">{{firstName}} {{lastName}}</p>
 
                 <div class="about">About Me:<br>{{aboutMe}}</div>
             </div>
         {{/each}}
+    </script>
     
   <footer>
     <p>&copy; 2023 Buy Me A Knafeh</p>
   </footer>
 
-<!--
-    <div class="weather-app-container">
-        <form class="city-form">
-            <input type="text" placeholder="City" required />
-            <button type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </form>
-
-        <div class="cities"></div>
-
-        <script id="cities-template" type="text/x-handlebars-template">
-            {{#each cities}}
-                <div class="city-weather">
-
-                    <div class="city-name">
-                        <i class="location-icon fa-solid fa-location-dot"></i>
-                        <p>{{name}}</p>
-                    </div>
-
-                    <div class="city-controller" data-id={{id}}>
-                        {{#if isSaved}}
-                            <button class="delete-btn">
-                                <i class="delete-icon fa-solid fa-trash"></i>
-                            </button>
-                        {{else}}
-                            <button class="save-btn">
-                                <i class="save-icon fa-solid fa-floppy-disk"></i>
-                            </button>
-                        {{/if}}
-                    </div>
-
-                    <div class="humidity-container">
-                        <i class="humidity-icon fa-solid fa-water"></i>
-                        <div class="humidity">
-                            <p>{{humidity}}</p>
-                            <small>Humidity</small>
-                        </div>
-                    </div>
-
-                    <div class="wind-speed-container">
-                        <i class="wind-speed-icon fa-solid fa-wind"></i>
-                        <div class="wind-speed">
-                            <p>{{windSpeed}}</p>
-                            <small>Wind Speed</small>
-                        </div>
-                    </div>
-
-                    <div class="city-data">
-                        <img class="weather-icon" src={{conditionPic}} alt="Condition Picture"/>
-                        <p class="temperature">{{temperature}}</p>
-                        <p class="condition">{{condition}}</p>
-
-
-                    </div>
-                </div>
-            {{/each}}
-        </script>
-    </div>
--->
-<script src="../utilites/apiManager.js"></script>
+<script src="../utilites/APIManager.js"></script>
 <script src="../utilites/Renderer.js"></script>
 <script src="main.js"></script>
 <script src="../sign-up/sign-up.js"></script>

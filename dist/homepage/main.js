@@ -95,9 +95,7 @@ $(".grantees").on("click", ".grantee .save-icon", function () {
   toggleGranteeIsSaved(id);
   const url = window.location.href;
   const granteeId = url.slice(url.indexOf("=") + 1);
-  $.post(`/favoriteGrantees/${granteeId}`, { id }).then(() => {
-    alert("added");
-  });
+  $.post(`/favoriteGrantees/${granteeId}`, { id });
   renderer.renderGrantees(grantees);
   ToggleLogin(isLoggedIn);
 });
@@ -117,15 +115,20 @@ $(".saved-grantees").on("click", ".saved-grantee .save-icon", function () {
 });
 
 $(".navigation-bar .saved-icon").on("click", function () {
-  const savedGrantees = grantees.filter((grantee) => grantee.isSaved === true);
-  if (savedGrantees.length === 0) {
-    alert("No Saved Grantees");
-    return;
-  }
+  // const savedGrantees = grantees.filter((grantee) => grantee.isSaved === true);
+  // if (savedGrantees.length === 0) {
+  //   alert("No Saved Grantees");
+  //   return;
+  // }
 
-  savedGrantee.push(...savedGrantees);
-  renderer.renderSavedGrantees(savedGrantees);
-  $(".saved-grantees-modal").css("visibility", "visible");
+  // savedGrantee.push(...savedGrantees);
+  const url = window.location.href;
+  const id = url.slice(url.indexOf("=") + 1);
+  $.get(`/getAllFavorites/${id}`).then((favGrantees) => {
+    console.log(favGrantees[0].favorite);
+    renderer.renderSavedGrantees(favGrantees[0].favorite);
+    $(".saved-grantees-modal").css("visibility", "visible");
+  });
 });
 
 $(".saved-grantees .close-btn").on("click", function () {

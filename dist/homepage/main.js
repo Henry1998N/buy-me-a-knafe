@@ -2,6 +2,8 @@ const renderer = new Renderer();
 const apiManager = new APIManager();
 let grantees = [];
 
+const savedGrantee = []
+
 async function topgranteed() {
   let topgranteed = await $.get("/topgranteed?limit=3");
   return topgranteed;
@@ -69,9 +71,10 @@ $(".navigation-bar .saved-icon").on("click", function () {
     alert("No Saved Grantees");
     return;
   }
-  renderer.renderSavedGrantees(savedGrantees);
-  $(".saved-grantees-modal").css("visibility", "visible");
-});
+  savedGrantee.push(...savedGrantees)
+  renderer.renderSavedGrantees(savedGrantees)
+  $(".saved-grantees-modal").css('visibility', 'visible')
+})
 
 $(".saved-grantees .close-btn").on("click", function () {
   $(".saved-grantees-modal").css("visibility", "hidden");
@@ -92,3 +95,9 @@ $("form.recipience-form").on("submit", function (event) {
   $(this)[0][2].value = "";
   $(this)[0][3].value = "";
 });
+
+$("#btn").on("click", function() {
+    window.location.href = "/homepage/wheel.html"
+})
+
+// console.log(savedGrantee)

@@ -1,117 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
-    <link rel="stylesheet" href="sign-up.css" />
-  </head>
-  <body>
-    <form class="sign-up-form" style="border: 1px solid #ccc">
-      <div class="container">
-        <h1>Sign Up</h1>
-        <p>Please fill in this form to create an account.</p>
-        <hr />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
-        <label for="email"><b>Email</b></label>
-        <input
-          type="text"
-          class="emailInput"
-          placeholder="Enter Email"
-          name="email"
-          required
-        />
+  <link rel="stylesheet" href="sign-up.css" />
+</head>
 
-        <label for="password"><b>Password</b></label>
-        <input
-          type="password"
-          class="passwordInput"
-          placeholder="Enter Password"
-          name="password"
-          required
-        />
+<body>
 
-        <label for="first-name"><b>First Name</b></label>
-        <input
-          type="text"
-          placeholder="Enter First Name"
-          name="first name"
-          required
-          class="f-nameInput"
-        />
+  <div class="sign-up-form-container">
+    <form class="sign-up-form">
+      <h1>Sign Up</h1>
+      
+      <label for="email"><b>Email</b></label>
+      <input type="text" class="emailInput" placeholder="Enter Email" name="email" required />
 
-        <label for="last-name"><b>Last Name</b></label>
-        <input
-          type="text"
-          placeholder="Enter Last Name"
-          name="last name"
-          required
-          class="l-nameInput"
-        />
+      <label for="password"><b>Password</b></label>
+      <input type="password" class="passwordInput" placeholder="Enter Password" name="password" required />
 
-        <label for="Description"><b>Description</b></label>
-        <input
-          type="text"
-          placeholder="Enter Description"
-          name="Description"
-          required
-          class="descriptionInput"
-        />
+      <label for="first-name"><b>First Name</b></label>
+      <input type="text" placeholder="Enter First Name" name="first name" required class="f-nameInput" />
 
-        <label for="About-me"><b>About me</b></label>
-        <input
-          type="text"
-          placeholder="Enter About"
-          name="About-me"
-          required
-          class="about-meInput"
-        />
+      <label for="last-name"><b>Last Name</b></label>
+      <input type="text" placeholder="Enter Last Name" name="last name" required class="l-nameInput" />
 
-        <label for="City"><b>City</b></label>
-        <input
-          type="text"
-          placeholder="Enter City"
-          name="City"
-          required
-          class="cityInput"
-        />
+      <label for="Description"><b>Description</b></label>
+      <textarea name="Description" required class="descriptionInput"  placeholder="Description&#10;Example:&#10;Hey 👋 I'm making sure you always have something to read about The Bachelor."></textarea>
 
-        <label for="Country"><b>Country</b></label>
-        <input
-          type="text"
-          placeholder="Enter Country"
-          name="Country"
-          required
-          class="countryInput"
-        />
+      <label for="About-me"><b>About me</b></label>
+      <input type="text" placeholder="Enter About" name="About-me" required class="about-meInput" />
 
-        <label for="Quote"><b>Quote</b></label>
-        <input
-          type="text"
-          placeholder="Enter Quote"
-          name="Quote"
-          required
-          class="quoteInput"
-        />
+      <label for="City"><b>City</b></label>
+      <input type="text" placeholder="Enter City" name="City" required class="cityInput" />
 
-        <label for="picture"> <b>Picture</b> </label>
-        <input
-          type="text"
-          placeholder="Enter Picture"
-          name="picture"
-          required
-          class="pictureInput"
-        />
+      <label for="Country"><b>Country</b></label>
+      <input type="text" placeholder="Enter Country" name="Country" required class="countryInput" />
 
-        <div class="clearfix">
-          <button type="button" class="cancelbtn">Cancel</button>
-          <button type="submit" class="signupbtn">Sign Up</button>
-        </div>
+      <label for="Quote"><b>Quote</b></label>
+      <input type="text" placeholder="Enter Quote" name="Quote" required class="quoteInput" />
+
+      <label for="picture"> <b>Picture</b> </label>
+      <input type="text" placeholder="Enter Picture" name="picture" required class="pictureInput" />
+
+      <div class="clearfix">
+        <button type="submit" class="btn signupbtn">Sign Up</button>
+        <button type="button"  style="background-color: red" class="btn cancelbtn">Cancel</button>
       </div>
+
     </form>
-    <script src="sign-up.js"></script>
-  </body>
+  </div>
+  <script src="sign-up.js"></script>
+</body>
+
 </html>

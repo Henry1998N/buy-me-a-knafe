@@ -93,6 +93,10 @@ footer{
 .signup-btn{
     background-color: var(--knafeh-color);
 }
+.logout-btn{
+    content: 'Log Out';
+    background-color: var(--knafeh-color);
+}
 .login-btn{
     background-color: white;
 }

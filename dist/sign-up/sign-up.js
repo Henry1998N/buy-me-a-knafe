@@ -1,6 +1,4 @@
-$(".signup-btn").on("click", function () {
-  window.location.href = "/sign-up/sign-up.html";
-});
+
 
 $(".cancelbtn").on("click", function () {
   window.location.href = "/homepage/index.html";

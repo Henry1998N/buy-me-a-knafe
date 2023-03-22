@@ -29,8 +29,10 @@ const getGrantee = function (id) {
   $.get(`/grantee?id=${id}`).then((grantee) => {
     renderer.renderGrantee(grantee)
     $.get("/supporters?granteeId=" + id).then(supporters => {
-      console.log(supporters)
-      renderer.renderSupporters(supporters)
+
+      renderer.renderSupporters(supporters.map(supporter => {
+        return {...supporter, date: new Date(supporter.date).toLocaleString()}
+      }))
     })
   })
 }
@@ -47,15 +49,16 @@ $(".grantee-profile").on("click", "#supportBtn", function () {
   let message;
   let granteeId = getIdFromUrl();
   let supportText = $(this).text();
-  if (supportText === "Choose Amount") {
-    alert("you must choose amount to support");
-    return;
-  }
   let amount = supportText.slice(
     supportText.indexOf(" "),
     supportText.length - 1
   );
   amount = parseInt(amount);
+
+  if (amount === 0) {
+    alert("Choose Amount.");
+    return;
+  }
   let newSupporter = getSupporterDetails();
   if (newSupporter.name == "") {
     name = "Someone";
@@ -68,7 +71,7 @@ $(".grantee-profile").on("click", "#supportBtn", function () {
     message = newSupporter.message;
   }
   newSupporter.amount = amount;
-  let picture = 
+  let picture =
     "https://static.vecteezy.com/system/resources/previews/007/296/443/original/user-icon-person-icon-client-symbol-profile-icon-vector.jpg";
   $.post(`/supporter?granteeId=${granteeId}`, {
     name: name,

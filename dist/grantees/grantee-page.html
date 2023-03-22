@@ -90,26 +90,17 @@
   <div class="supporters"></div>
 
   <script id="supporters-template" type="text/x-handlebars-template">
-    <h1>Supporters:</h1>
           {{#each supporters}}
-          <ul>
             <div class="supporter">
-              <li>{{name}} {{message}}</li>
+              <i class="supporter-icon fa-solid fa-circle-user"></i>
+              <div class="text">
+                <p>{{amount}}₪ Recieved From {{name}}</p>
+                <p> - "{{message}}"</p>
+                <small>At {{date}}</small>
+              </div>
             </div>
-          </ul>
           {{/each}}
     </script>
-
-  <h2>What's in it for you?</h2>
-  <ul>
-    <li>Early access to new content</li>
-    <li>Exclusive behind-the-scenes content</li>
-    <li>Personalized thank you note</li>
-  </ul>
-
-
-
-
 
   <footer>
     <p>&copy; 2023 Buy Me A Knafeh</p>

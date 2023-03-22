@@ -4,6 +4,18 @@ let grantees = [];
 
 const savedGrantee = [];
 
+function ToggleLogin(){
+  isLoggedIn = !isLoggedIn
+  if(isLoggedIn === false){
+    $(".grantees .grantee .save-icon").css("visibility", "hidden");
+    $(".navigation-bar .saved-icon").css("visibility", "hidden");
+  }
+  else{
+    $(".grantees .grantee .save-icon").css("visibility", "visible");
+    $(".navigation-bar .saved-icon").css("visibility", "visible");
+  }
+}
+
 async function topgranteed() {
   let topgranteed = await $.get("/topgranteed?limit=3");
   return topgranteed;

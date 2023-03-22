@@ -81,6 +81,7 @@ footer{
     transition-duration: 200ms;
 }
 .saved-icon{
+    visibility: hidden;
     font-size: 25px;
     color: rgba(0, 0, 0, 0.5);
     align-self: center;
@@ -229,6 +230,7 @@ footer{
 }
 
 .grantee .save-icon{
+    visibility: hidden;
     position: absolute;
     top: 10px;
     left: 10px;

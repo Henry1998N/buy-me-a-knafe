@@ -1,11 +1,9 @@
 const renderer = new Renderer();
-//const apiManager = new APIManager();
-let recipiences = [];
+const apiManager = new APIManager();
+let grantees = [];
 
 
-async function fetchGrantees() {
-  return $.get("/grantees");
-}
+
 async function topgranteed() {
   let topgranteed = await $.get("/topgranteed?limit=3");
   return topgranteed;
@@ -17,6 +15,7 @@ async function onPageLoad() {
     return {...grantee, isSaved: false}
   })
   renderer.renderGrantees(grantees);
+  
   let topGrandeed = await topgranteed();
   renderer.renderTopGrandeed(topGrandeed);
 }

@@ -2,7 +2,7 @@ const renderer = new Renderer();
 const apiManager = new APIManager();
 let grantees = [];
 
-const savedGrantee = []
+const savedGrantee = [];
 
 async function topgranteed() {
   let topgranteed = await $.get("/topgranteed?limit=3");
@@ -54,6 +54,7 @@ $(".grantees").on("click", ".grantee .save-icon", function () {
 
 $(".saved-grantees").on("click", ".saved-grantee .save-icon", function () {
   const id = $(this).parent().data().id;
+  savedGrantee.push(...savedGrantees);
   toggleGranteeIsSaved(id);
   renderer.renderGrantees(grantees);
   const savedGrantees = grantees.filter((grantee) => grantee.isSaved === true);
@@ -71,10 +72,9 @@ $(".navigation-bar .saved-icon").on("click", function () {
     alert("No Saved Grantees");
     return;
   }
-  savedGrantee.push(...savedGrantees)
-  renderer.renderSavedGrantees(savedGrantees)
-  $(".saved-grantees-modal").css('visibility', 'visible')
-})
+  renderer.renderSavedGrantees(savedGrantees);
+  $(".saved-grantees-modal").css("visibility", "visible");
+});
 
 $(".saved-grantees .close-btn").on("click", function () {
   $(".saved-grantees-modal").css("visibility", "hidden");
@@ -96,8 +96,8 @@ $("form.recipience-form").on("submit", function (event) {
   $(this)[0][3].value = "";
 });
 
-$("#btn").on("click", function() {
-    window.location.href = "/homepage/wheel.html"
-})
+$("#btn").on("click", function () {
+  window.location.href = "/homepage/wheel.html";
+});
 
 // console.log(savedGrantee)

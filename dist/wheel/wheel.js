@@ -7,21 +7,13 @@ var padding = { top: 20, right: 40, bottom: 0, left: 0 },
   oldrotation = 0,
   picked = 100000,
   oldpick = [],
-  color = d3.scale.category20(); //category20c()
+  color = d3.scale.category20();
 
 const api = new APIManager();
-// let grantees = getGrantees();
 const url = window.location.href;
 const id = url.slice(url.indexOf("=") + 1);
 const dataP = api.getData(id);
 
-// for (let i = 0; i < data[0].length; i++) {
-//   let firstName = data[0][i].firstName;
-//   console.log(firstName);
-// }
-// console.log(data);
-// for (let i of data[0]) {
-// }
 dataP.then((data) => {
   console.log(data);
 
@@ -46,9 +38,7 @@ dataP.then((data) => {
     .value(function (d) {
       return 1;
     });
-  // declare an arc generator function
   var arc = d3.svg.arc().outerRadius(r);
-  // select paths, use arc generator to draw
   var arcs = vis
     .selectAll("g.slice")
     .data(pie)
@@ -64,7 +54,6 @@ dataP.then((data) => {
     .attr("d", function (d) {
       return arc(d);
     });
-  // add the text
   arcs
     .append("text")
     .attr("transform", function (d) {
@@ -86,7 +75,6 @@ dataP.then((data) => {
   container.on("click", spin);
   function spin() {
     container.on("click", null);
-    //all slices have been seen, all done
     if (oldpick.length == data.length) {
       console.log("done");
       container.on("click", null);
@@ -111,9 +99,7 @@ dataP.then((data) => {
       .duration(3000)
       .attrTween("transform", rotTween)
       .each("end", function () {
-        //mark question as seen
         d3.select(".slice:nth-child(" + (picked + 1) + ") path").attr("fill");
-        //populate question
         d3.select("#question h1").text(
           ` You choose ${
             data[picked].firstName + " " + data[picked].lastName
@@ -124,8 +110,6 @@ dataP.then((data) => {
         d3.select("#question button").text("move to profile");
         oldrotation = rotation;
         console.log(data[picked].firstName);
-
-        /* Comment the below line for restrict spin to sngle time */
         container.on("click", spin);
       });
   }
@@ -134,8 +118,6 @@ dataP.then((data) => {
     let id = $(this).data().id;
     window.location.href = `/grantees/grantee-page.html?id=${id}`;
   });
-
-  //make arrow
   svg
     .append("g")
     .attr(
@@ -149,14 +131,12 @@ dataP.then((data) => {
     .append("path")
     .attr("d", "M-" + r * 0.15 + ",0L0," + r * 0.05 + "L0,-" + r * 0.05 + "Z")
     .style({ fill: "black" });
-  //draw spin circle
   container
     .append("circle")
     .attr("cx", 0)
     .attr("cy", 0)
     .attr("r", 60)
     .style({ fill: "white", cursor: "pointer" });
-  //spin text
   container
     .append("text")
     .attr("x", 0)
@@ -182,23 +162,12 @@ dataP.then((data) => {
       window.crypto.getRandomValues(array);
       console.log("works");
     } else {
-      //no support for crypto, get crappy random numbers
       for (var i = 0; i < 1000; i++) {
         array[i] = Math.floor(Math.random() * 100000) + 1;
       }
     }
     return array;
   }
-
-  // async function fetchGrantees() {
-  //     return $.get("/grantees");
-  //   }
-
-  //   async function onPageLoad() {
-  //     const grantees = await fetchGrantees();
-  //     console.log(grantees)
-  //     return grantees
-  //   }
 });
 $(".question").on("click", "img", function () {
   const id = $(this).data.id();

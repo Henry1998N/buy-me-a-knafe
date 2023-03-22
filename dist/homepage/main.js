@@ -117,13 +117,6 @@ $(".saved-grantees").on("click", ".saved-grantee .save-icon", function () {
 });
 
 $(".navigation-bar .saved-icon").on("click", function () {
-  // const savedGrantees = grantees.filter((grantee) => grantee.isSaved === true);
-  // if (savedGrantees.length === 0) {
-  //   alert("No Saved Grantees");
-  //   return;
-  // }
-
-  // savedGrantee.push(...savedGrantees);
   const url = window.location.href;
   const id = url.slice(url.indexOf("=") + 1);
   $.get(`/getAllFavorites/${id}`).then((favGrantees) => {

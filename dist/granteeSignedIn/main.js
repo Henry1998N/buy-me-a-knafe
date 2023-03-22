@@ -27,5 +27,4 @@ $(document).ready(function () {
 });
 $(".grantee-Profile").on("click", ".userDonate", function () {
   window.location.href = `/homepage/index.html?id=${granteeId}`;
-  // alert(granteeId);
 });

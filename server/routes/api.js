@@ -38,7 +38,6 @@ router.post("/signUp", async function (req, res) {
       g1.save();
     }
   });
-  g1.save();
 });
 
 router.get("/grantee", function (req, res) {

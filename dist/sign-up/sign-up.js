@@ -30,8 +30,6 @@ $("form.sign-up-form").on("submit", function () {
       email: email,
       supporters: [],
     },
-    function () {
-      alert("signed up !");
-    }
+    function () {}
   );
 });

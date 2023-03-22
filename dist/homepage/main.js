@@ -7,7 +7,7 @@ const savedGrantee = [];
 const isGranteeLoggedIn = function () {
   const url = window.location.href;
   const id = url.slice(url.indexOf("=") + 1);
-  if (id.includes(".html")) {
+  if (id.includes("http://localhost:3000/")) {
     return false;
   }
   return true;
@@ -94,6 +94,7 @@ $(".grantees").on("click", ".grantee .save-icon", function () {
   const id = $(this).parent().data().id;
   toggleGranteeIsSaved(id);
   renderer.renderGrantees(grantees);
+  ToggleLogin(isLoggedIn);
 });
 
 $(".saved-grantees").on("click", ".saved-grantee .save-icon", function () {

@@ -50,7 +50,14 @@ async function onPageLoad() {
 
   renderer.renderGrantees(grantees);
   let topGrandeed = await topgranteed();
-  renderer.renderTopGrandeed(topGrandeed);
+  let checkedTopGrandeed = [];
+  topGrandeed.forEach((grandee) => {
+    if (grandee.supporters.length > 0) {
+      checkedTopGrandeed.push(grandee);
+    }
+  });
+
+  renderer.renderTopGrandeed(checkedTopGrandeed);
 }
 $(".buttons").on("click", ".login-btn", function () {
   window.location.href = `/sign-in/sign-in.html`;

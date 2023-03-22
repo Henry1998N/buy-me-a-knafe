@@ -4,10 +4,25 @@ let grantees = [];
 
 const savedGrantee = [];
 
-let isLoggedIn = false;
+const isGranteeLoggedIn = function () {
+  const url = window.location.href;
+  const id = url.slice(url.indexOf("=") + 1);
+  if (id.includes(".html")) {
+    return false;
+  }
+  return true;
+};
+let isLoggedIn = isGranteeLoggedIn();
+
+// if (isLoggedIn) {
+//   $(".grantees .grantee .save-icon").css("visibility", "visible");
+//   $(".navigation-bar .saved-icon").css("visibility", "visible");
+//   $(".navigation-bar .login-btn").css("visibility", "hidden");
+//   $(".navigation-bar .signup-btn").text("Log out");
+// }
 
 function ToggleLogin() {
-  isLoggedIn = !isLoggedIn;
+  // isLoggedIn = !isLoggedIn;
   if (isLoggedIn === false) {
     $(".grantees .grantee .save-icon").css("visibility", "hidden");
     $(".navigation-bar .saved-icon").css("visibility", "hidden");
@@ -17,12 +32,11 @@ function ToggleLogin() {
   } else {
     $(".grantees .grantee .save-icon").css("visibility", "visible");
     $(".navigation-bar .saved-icon").css("visibility", "visible");
-
     $(".navigation-bar .login-btn").css("visibility", "hidden");
     $(".navigation-bar .signup-btn").text("Log out");
   }
 }
-
+ToggleLogin();
 $(".navigation-bar .signup-btn").on("click", function () {
   if (isLoggedIn) {
     ToggleLogin();

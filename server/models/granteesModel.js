@@ -14,6 +14,7 @@ const granteeSchema = new Schema({
   email: String,
   supporters: [{ type: Schema.Types.ObjectId, ref: "Supporter" }],
   password: String,
+  quote: String,
 });
 
 const Grantee = mongoose.model("Grantee", granteeSchema);

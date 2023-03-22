@@ -32,6 +32,8 @@ router.post("/signUp", async function (req, res) {
         balance: 0,
         email: newGrantee.email,
         supporters: [],
+        password: newGrantee.password,
+        quote: newGrantee.quote,
       });
       g1.save();
     }
@@ -69,6 +71,14 @@ router.get("/supporters", function (req, res) {
     .then((grantee) => {
       res.send(grantee.supporters);
     });
+});
+
+router.get("/topgranteed", async (req, res) => {
+  limit = parseInt(req.query.limit);
+  const topGrantees = await Grantee.find()
+    .sort({ supporters: -1 })
+    .limit(limit);
+  res.send(topGrantees);
 });
 
 module.exports = router;

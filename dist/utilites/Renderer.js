@@ -14,8 +14,17 @@ class Renderer {
   renderGrantee(grantee) {
     this.handleBarHelper("#grantee-template", grantee, ".grantee-profile");
   }
-
+  renderSavedGrantees(grantees) {
+    this.handleBarHelper("#saved-grantees-template", { grantees }, ".saved-grantees");
+  }
   renderSupporters(supporters) {
-    this.handleBarHelper("#supporters-template", {supporters}, ".supporters");
+    this.handleBarHelper("#supporters-template", { supporters }, ".supporters");
+  }
+  renderTopGrandeed(topGrandeed) {
+    this.handleBarHelper(
+      "#topgranteed-template",
+      { topGrandeed },
+      ".topgranteed"
+    );
   }
 }

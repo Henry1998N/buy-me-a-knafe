@@ -16,6 +16,7 @@ $("form.sign-up-form").on("submit", function () {
   let country = $(".countryInput").val();
   let email = $(".emailInput").val();
   let password = $(".passwordInput").val();
+  let quote = $(".quoteInput").val();
 
   $.post(
     "/signUp",
@@ -31,6 +32,7 @@ $("form.sign-up-form").on("submit", function () {
       email: email,
       password: password,
       supporters: [],
+      quote: quote,
     },
     function () {}
   );

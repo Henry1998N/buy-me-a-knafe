@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../homepage/style.css" />
+    <link rel="stylesheet" href="./grantee-page.css" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin Sans"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Grantee Page</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../homepage/style.css" />
-  <link rel="stylesheet" href="./grantee-page.css" />
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Josefin Sans" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Grantee Page</title>
-</head>
+  <body>
+    <div class="header-bar">
+      <img
+        class="knafeh-icon"
+        src="https://i.pinimg.com/originals/5e/6f/b2/5e6fb2231a619cdc3770518ec0e8e7c7.jpg"
+      />
+    </div>
 
-<body>
-  <div class="header-bar">
-    <img class="knafeh-icon" src="https://i.pinimg.com/originals/5e/6f/b2/5e6fb2231a619cdc3770518ec0e8e7c7.jpg" />
-  </div>
+    <div class="grantee-profile-container">
+      <div class="grantee-profile"></div>
+    </div>
 
-  <div class="grantee-profile-container">
-    <div class="grantee-profile"></div>
-  </div>
-
-  <script id="grantee-template" type="text/x-handlebars-template">
+    <script id="grantee-template" type="text/x-handlebars-template">
       <div class="profile-background"></div>
       <p class="header header-text">Profile</p>
       <div class="email header-text">{{email}}</div>
@@ -75,7 +84,13 @@
           <button class="btn">1</button>
           <button class="btn">3</button>
           <button class="btn">5</button>
-          <input class="number-input" type="number" min="1" max="99" placeholder="0"/>
+          <input
+            class="number-input"
+            type="number"
+            min="1"
+            max="99"
+            placeholder="0"
+          />
         </div>
         <input id="supporterName" type="text" placeholder="Name (Optional)" />
         <textarea
@@ -86,28 +101,26 @@
       </div>
     </script>
 
+    <div class="supporters"></div>
 
-  <div class="supporters"></div>
-
-  <script id="supporters-template" type="text/x-handlebars-template">
-          {{#each supporters}}
-            <div class="supporter">
-              <i class="supporter-icon fa-solid fa-circle-user"></i>
-              <div class="text">
-                <p>{{amount}}₪ Recieved From {{name}}</p>
-                <p> - "{{message}}"</p>
-                <small>At {{date}}</small>
-              </div>
-            </div>
-          {{/each}}
+    <script id="supporters-template" type="text/x-handlebars-template">
+      {{#each supporters}}
+        <div class="supporter">
+          <i class="supporter-icon fa-solid fa-circle-user"></i>
+          <div class="text">
+            <p>{{amount}}₪ Recieved From {{name}}</p>
+            <p> - "{{message}}"</p>
+            <small>At {{date}}</small>
+          </div>
+        </div>
+      {{/each}}
     </script>
 
-  <footer>
-    <p>&copy; 2023 Buy Me A Knafeh</p>
-  </footer>
+    <footer>
+      <p>&copy; 2023 Buy Me A Knafeh</p>
+    </footer>
 
-  <script src="../utilites/Renderer.js"></script>
-  <script src="grantee.js"></script>
-</body>
-
+    <script src="../utilites/Renderer.js"></script>
+    <script src="grantee.js"></script>
+  </body>
 </html>

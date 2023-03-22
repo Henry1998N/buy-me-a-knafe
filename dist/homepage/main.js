@@ -1,32 +1,79 @@
 const renderer = new Renderer();
-//const apiManager = new APIManager();
-let recipiences = [];
+const apiManager = new APIManager();
+let grantees = [];
 
 
-async function fetchGrantees() {
-  return $.get("/grantees");
+
+async function topgranteed() {
+  let topgranteed = await $.get("/topgranteed?limit=3");
+  return topgranteed;
 }
 
 async function onPageLoad() {
-  const grantees = await fetchGrantees();
-  console.log(grantees);
+  const granteesFetched = await apiManager.fetchGrantees();
+  grantees = granteesFetched.map(grantee => {
+    return {...grantee, isSaved: false}
+  })
   renderer.renderGrantees(grantees);
+  
+  let topGrandeed = await topgranteed();
+  renderer.renderTopGrandeed(topGrandeed);
 }
 
 onPageLoad();
 
-$(".grantees").on("click", ".grantee", function () {
+$(".grantees").on("click", ".grantee img", function () {
+  const id = $(this).parent().data().id;
+  window.location.href = `/grantees/grantee-page.html?id=${id}`;
+});
+$(".topgranteed").on("click", ".grantee", function () {
   const id = $(this).data().id;
   window.location.href = `/grantees/grantee-page.html?id=${id}`;
-  /*
-    const id = $(this).parent().data().id
-    const cityWeatherIndex = cities.findIndex(cityWeather => cityWeather.id === id)
-    const cityWeather = cities[cityWeatherIndex]
-    cityWeather.isSaved = true
-    renderer.renderCities(cities)
-    apiManager.saveCityWeather(cityWeather)
-    */
 });
+
+function toggleGranteeIsSaved(id){
+  const savedGranteeIndex = grantees.findIndex(grantee => grantee._id === id)
+  const isSaved = grantees[savedGranteeIndex].isSaved
+  grantees[savedGranteeIndex] = {...grantees[savedGranteeIndex], isSaved: !isSaved}
+}
+
+$(".grantees").on("click", ".grantee .save-icon", function () {
+  const id = $(this).parent().data().id
+  toggleGranteeIsSaved(id)
+  renderer.renderGrantees(grantees);
+})
+
+$(".saved-grantees").on("click", ".saved-grantee .save-icon", function () {
+  const id = $(this).parent().data().id
+  toggleGranteeIsSaved(id)
+  renderer.renderGrantees(grantees);
+  const savedGrantees = grantees.filter(grantee => grantee.isSaved === true)
+
+  renderer.renderSavedGrantees(savedGrantees)
+  if(savedGrantees.length === 0){
+    $(".saved-grantees-modal").css('visibility', 'hidden')
+    return
+  }
+})
+
+$(".navigation-bar .saved-icon").on("click", function () {
+  const savedGrantees = grantees.filter(grantee => grantee.isSaved === true)
+  if(savedGrantees.length === 0){
+    alert("No Saved Grantees")
+    return
+  }
+  renderer.renderSavedGrantees(savedGrantees)
+  $(".saved-grantees-modal").css('visibility', 'visible')
+})
+
+$(".saved-grantees .close-btn").on("click", function () {
+  $(".saved-grantees-modal").css('visibility', 'hidden')
+})
+
+$(".saved-grantees-modal").on("click", function (event) {
+  if(event.target.className === 'saved-grantees-modal')
+    $(".saved-grantees-modal").css('visibility', 'hidden')
+})
 
 $("form.recipience-form").on("submit", function (event) {
   event.preventDefault();
@@ -34,71 +81,7 @@ $("form.recipience-form").on("submit", function (event) {
   const recipienceTitle = $(this)[0][2].value;
   const recipienceAbout = $(this)[0][3].value;
 
-  /*
-    apiManager.fetchCityWeatherByCityName(cityName).then(fetchedCityWeather => {
-        cities.push(getCityWeatherInstance(fetchedCityWeather, false))
-        renderer.renderCities(cities)
-    }).catch(err => alert("City not found"))
-    */
-
   $(this)[0][0].value = "";
   $(this)[0][2].value = "";
   $(this)[0][3].value = "";
 });
-
-/*
-function onPageLoad(){
-    apiManager.fetchAllWeathers().then(fetchedCitiesWeather => {
-        fetchedCitiesWeather.forEach(fetchedCityWeather => cities.push(getCityWeatherInstance(fetchedCityWeather, true)))
-        renderer.renderCities(cities)
-    })
-}
-
-onPageLoad()
-
-
-$("form.city-form").on("submit", function(event){
-    event.preventDefault()
-    const cityName = $(this)[0][0].value
-
-    apiManager.fetchCityWeatherByCityName(cityName).then(fetchedCityWeather => {
-        cities.push(getCityWeatherInstance(fetchedCityWeather, false))
-        renderer.renderCities(cities)
-    }).catch(err => alert("City not found"))
-
-    $(this)[0][0].value = ''
-})
-
-$(".cities").on("click", "button.save-btn", function(){
-    const id = $(this).parent().data().id
-    const cityWeatherIndex = cities.findIndex(cityWeather => cityWeather.id === id)
-    const cityWeather = cities[cityWeatherIndex]
-    cityWeather.isSaved = true
-    renderer.renderCities(cities)
-    apiManager.saveCityWeather(cityWeather)
-})
-
-$(".cities").on("click", "button.delete-btn", function(){
-    const id = $(this).parent().data().id
-    const cityWeatherIndex = cities.findIndex(cityWeather => cityWeather.id === id)
-    const cityWeather = cities[cityWeatherIndex]
-    cityWeather.isSaved = false
-    renderer.renderCities(cities)
-    apiManager.deleteCityWeather(id)
-})
-
-
-
-const getCityWeatherInstance = (fetchedCityWeather, isSaved) => {
-    return new CityWeather(
-        fetchedCityWeather._id, 
-        fetchedCityWeather.name,
-        fetchedCityWeather.temperature,
-        fetchedCityWeather.condition,
-        fetchedCityWeather.conditionPic,
-        fetchedCityWeather.humidity,
-        fetchedCityWeather.windSpeed,
-        isSaved
-    )
-}
-*/

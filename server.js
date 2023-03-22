@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const api = require("./server/routes/api");
+const api = require("./server/routes/granteesApi");
 const path = require("path");
 const testApi = require("./server/routes/testApi");
 const mongoose = require("mongoose");

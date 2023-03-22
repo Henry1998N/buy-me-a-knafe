@@ -2,15 +2,20 @@ const renderer = new Renderer();
 //const apiManager = new APIManager();
 let recipiences = [];
 
-
 async function fetchGrantees() {
   return $.get("/grantees");
+}
+async function topgranteed() {
+  let topgranteed = await $.get("/topgranteed?limit=3");
+  return topgranteed;
 }
 
 async function onPageLoad() {
   const grantees = await fetchGrantees();
   console.log(grantees);
   renderer.renderGrantees(grantees);
+  let topGrandeed = await topgranteed();
+  renderer.renderTopGrandeed(topGrandeed);
 }
 
 onPageLoad();
@@ -18,14 +23,10 @@ onPageLoad();
 $(".grantees").on("click", ".grantee", function () {
   const id = $(this).data().id;
   window.location.href = `/grantees/grantee-page.html?id=${id}`;
-  /*
-    const id = $(this).parent().data().id
-    const cityWeatherIndex = cities.findIndex(cityWeather => cityWeather.id === id)
-    const cityWeather = cities[cityWeatherIndex]
-    cityWeather.isSaved = true
-    renderer.renderCities(cities)
-    apiManager.saveCityWeather(cityWeather)
-    */
+});
+$(".topgranteed").on("click", ".grantee", function () {
+  const id = $(this).data().id;
+  window.location.href = `/grantees/grantee-page.html?id=${id}`;
 });
 
 $("form.recipience-form").on("submit", function (event) {

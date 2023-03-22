@@ -18,6 +18,9 @@ $(".grantee-profile").on("input", ".amount-form .number-input", function () {
   let amount = $(this).val();
   $(".submit-btn").text(`Support ${amount * KNAFEPRICE}₪`);
 });
+const homePage = function () {
+  window.location.href = `/homepage/index.html`;
+};
 
 const getIdFromUrl = function () {
   const url = window.location.href;

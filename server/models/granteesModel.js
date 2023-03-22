@@ -13,6 +13,7 @@ const granteeSchema = new Schema({
   balance: Number,
   email: String,
   supporters: [{ type: Schema.Types.ObjectId, ref: "Supporter" }],
+  password: String,
 });
 
 const Grantee = mongoose.model("Grantee", granteeSchema);

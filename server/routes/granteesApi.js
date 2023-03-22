@@ -9,6 +9,7 @@ const granteeFunc = require("../utils/granteeFunc");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
+const granteeFavFun = require("../utils/granteeFavFunc");
 const { log } = require("handlebars");
 
 router.get("/grantees", function (req, res) {
@@ -54,11 +55,18 @@ router.post("/favoriteGrantees/:granteeId", async function (req, res) {
   let GranteeId = req.params.granteeId;
   let favoriteId = req.body.id;
   const newGrantee = await granteeFunc.genrateGrantee(favoriteId);
-  console.log(newGrantee);
-  Grantee.findOneAndUpdate(
-    { _id: GranteeId },
-    { $push: { favorite: newGrantee } }
-  ).then((a) => res.send(a));
+  const isExist = await granteeFavFun.isGranteeExistInFav(
+    GranteeId,
+    favoriteId
+  );
+  if (!isExist) {
+    Grantee.findOneAndUpdate(
+      { _id: GranteeId },
+      { $push: { favorite: newGrantee } }
+    ).then((a) => res.send(a));
+  } else {
+    res.status(409).send({ message: "grantee already exist !" });
+  }
 });
 
 router.get("/getAllFavorites/:id", function (req, res) {

@@ -95,7 +95,9 @@ $(".grantees").on("click", ".grantee .save-icon", function () {
   toggleGranteeIsSaved(id);
   const url = window.location.href;
   const granteeId = url.slice(url.indexOf("=") + 1);
-  $.post(`/favoriteGrantees/${granteeId}`, { id });
+  $.post(`/favoriteGrantees/${granteeId}`, { id }).catch((err) => {
+    alert("grantee already exists in favourites");
+  });
   renderer.renderGrantees(grantees);
   ToggleLogin(isLoggedIn);
 });

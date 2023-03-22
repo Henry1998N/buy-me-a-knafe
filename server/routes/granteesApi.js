@@ -50,6 +50,26 @@ router.get("/grantee", function (req, res) {
   });
 });
 
+router.post("/favoriteGrantees/:granteeId", async function (req, res) {
+  let GranteeId = req.params.granteeId;
+  let favoriteId = req.body.id;
+  const newGrantee = await granteeFunc.genrateGrantee(favoriteId);
+  console.log(newGrantee);
+  Grantee.findOneAndUpdate(
+    { _id: GranteeId },
+    { $push: { favorite: newGrantee } }
+  ).then((a) => res.send(a));
+});
+
+router.get("/getAllFavorites/:id", function (req, res) {
+  let userId = req.params.id;
+  Grantee.find({ _id: userId }, { favorite: 1, _id: 0 })
+    .populate("favorite")
+    .then((favorite) => {
+      res.send(favorite);
+    });
+});
+
 router.post("/supporter", async function (req, res) {
   const granteeId = req.query.granteeId;
   const supporter = req.body;

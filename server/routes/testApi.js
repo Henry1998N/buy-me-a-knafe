@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+const salt = bcrypt.genSaltSync(saltRounds);
 const Grantee = require("../models/granteesModel");
 const getUsers = function () {
   return axios.get("https://randomuser.me/api/?results=7").then((data) => {
@@ -12,6 +15,7 @@ const getUsers = function () {
         country: a.location.country,
         email: a.email,
         picture: a.picture.large,
+        password: "pass123",
       };
     });
     return users;
@@ -38,6 +42,7 @@ const saveGrantees = function (grantees) {
       balance: 0,
       email: element.email,
       supporters: [],
+      password: bcrypt.hashSync(element.password, salt),
     });
     newGrante.save();
   });

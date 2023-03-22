@@ -16,7 +16,7 @@ mongoose
 app.use(express.static(path.join(__dirname, "dist/homepage")));
 app.use(express.static(path.join(__dirname, "dist")));
 app.use(express.static(path.join(__dirname, "dist/sign-in")));
-app.use(express.static(path.join(__dirname, "dist/homepage")));
+app.use(express.static(path.join(__dirname, "dist/granteeSignedIn")));
 app.use(express.static(path.join(__dirname, "dist/grantees")));
 app.use(express.static(path.join(__dirname, "node_modules")));
 app.use(express.json());
@@ -26,7 +26,10 @@ app.use("/", api);
 app.use("/test", testApi);
 app.use("/users", loginApi);
 
-app.get("/grantees", middleWares.authenticateUser, (req, res) => {});
+app.get("/granteeProfile", middleWares.authenticateUser, (req, res) => {
+  console.log(req.user);
+  res.send({ email: req.user.email, id: req.user.id, name: req.user.name });
+});
 const port = 3000;
 app.listen(port, function () {
   console.log(`Running on port ${port}`);

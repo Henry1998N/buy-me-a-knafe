@@ -1,8 +1,17 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const secretKey = "buyMeAknafehTeamIsOnFire!";
-function validateUser(users, email, password) {
-  const user = users.find((u) => u.email === email);
+const axios = require("axios");
+const Grantee = require("../models/granteesModel");
+
+const getGrantees = async function () {
+  return Grantee.find({}).then((grantees) => {
+    return grantees;
+  });
+};
+async function validateUser(email, password) {
+  const grantees = await getGrantees();
+  const user = grantees.find((u) => u.email === email);
   if (!user) {
     return null;
   }
@@ -10,10 +19,10 @@ function validateUser(users, email, password) {
   if (!isPasswordValid) {
     return null;
   }
-  return { id: user.id, email: user.email };
+  return { id: user.id, email: user.email, name: user.firstName };
 }
-const generateToken = function (email) {
-  const payload = { email };
+const generateToken = function (email, id, name) {
+  const payload = { email, id, name };
   return jwt.sign(payload, secretKey);
 };
 

@@ -17,22 +17,14 @@ $(".container").on("click", "#loginBtn", function () {
     data: JSON.stringify({ email, password }),
     success: function (data) {
       localStorage.setItem("token", data.token);
-      window.location.href = "/homepage/index.html";
+      window.location.href = "/granteeSignedIn/grantee-page.html";
     },
     error: function (error, textStatus, errorThrown) {
       if (error.status === 401) {
-        console.log("Unauthorized error:", errorThrown);
+        alert("Unauthorized error:", errorThrown);
       } else {
-        console.log("Request failed:", errorThrown);
+        alert("Request failed:", errorThrown);
       }
     },
   });
-  // $.post("/users/login", { email: email, password: password })
-  //   .then((response) => {
-  //     window.location.href = `/homepage/index.html`;
-  //   })
-  //   .catch((err) => {
-  //     alert("invalid email or password");
-  //     location.reload();
-  //   });
 });

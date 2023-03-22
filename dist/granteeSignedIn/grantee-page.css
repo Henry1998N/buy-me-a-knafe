@@ -2,7 +2,6 @@
   --knafeh-color: #ff8f00;
   --knafeh-color-light: #ffe082;
 }
-
 body {
   letter-spacing: 1px;
   word-spacing: 2px;
@@ -253,4 +252,21 @@ footer {
 .supporter .supporter-icon {
   color: var(--knafeh-color);
   font-size: 50px;
+}
+
+.userDonate {
+  font-family: "Quicksand", sans-serif;
+  background-color: var(--knafeh-color);
+  font-size: 1.25rem;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 2rem;
+  border: none;
+}
+.userDonate:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition-duration: 200ms;
 }

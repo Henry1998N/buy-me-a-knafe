@@ -41,12 +41,6 @@ const getGrantee = function (id) {
   });
 };
 
-const getSupporterDetails = function () {
-  let name = $("#supporterName").val();
-  let message = $("#SupporterMessage").val();
-  let newSupporter = { name, message };
-  return newSupporter;
-};
 const castAmount = function (text) {
   let amount = text.slice(text.indexOf(" "), text.length - 1);
   amount = parseInt(amount);

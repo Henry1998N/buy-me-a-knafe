@@ -16,6 +16,13 @@ class Renderer {
   }
 
   renderSupporters(supporters) {
-    this.handleBarHelper("#supporters-template", {supporters}, ".supporters");
+    this.handleBarHelper("#supporters-template", { supporters }, ".supporters");
+  }
+  renderTopGrandeed(topGrandeed) {
+    this.handleBarHelper(
+      "#topgranteed-template",
+      { topGrandeed },
+      ".topgranteed"
+    );
   }
 }

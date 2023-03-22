@@ -16,19 +16,27 @@ router.get("/grantees", function (req, res) {
 
 router.post("/signUp", async function (req, res) {
   let newGrantee = req.body;
-  let g1 = new Grantee({
-    firstName: newGrantee.firstName,
-    lastName: newGrantee.lastName,
-    picture: newGrantee.picture,
-    description: newGrantee.description,
-    aboutMe: newGrantee.aboutMe,
-    city: newGrantee.city,
-    country: newGrantee.country,
-    balance: 0,
-    email: newGrantee.email,
-    supporters: [],
-    password: newGrantee.password,
-    quote: newGrantee.quote,
+  granteeFunc.isGranteeExist(newGrantee.email).then(function (isExist) {
+    if (isExist) {
+      console.log("Grantee already exists");
+      res.status(400).send({ message: "Exist" });
+    } else {
+      let g1 = new Grantee({
+        firstName: newGrantee.firstName,
+        lastName: newGrantee.lastName,
+        picture: newGrantee.picture,
+        description: newGrantee.description,
+        aboutMe: newGrantee.aboutMe,
+        city: newGrantee.city,
+        country: newGrantee.country,
+        balance: 0,
+        email: newGrantee.email,
+        supporters: [],
+        password: newGrantee.password,
+        quote: newGrantee.quote,
+      });
+      g1.save();
+    }
   });
   g1.save();
 });
@@ -64,6 +72,14 @@ router.get("/supporters", function (req, res) {
     .then((grantee) => {
       res.send(grantee.supporters);
     });
+});
+
+router.get("/topgranteed", async (req, res) => {
+  limit = parseInt(req.query.limit);
+  const topGrantees = await Grantee.find()
+    .sort({ supporters: -1 })
+    .limit(limit);
+  res.send(topGrantees);
 });
 
 module.exports = router;

@@ -74,7 +74,9 @@ onPageLoad();
 
 $(".grantees").on("click", ".grantee img", function () {
   const id = $(this).parent().data().id;
-  window.location.href = `/grantees/grantee-page.html?id=${id}`;
+  const url = window.location.href;
+  const granteeId = url.slice(url.indexOf("=") + 1);
+  window.location.href = `/grantees/grantee-page.html?id=${id}&granteeId=${granteeId}`;
 });
 $(".topgranteed").on("click", ".grantee", function () {
   const id = $(this).data().id;

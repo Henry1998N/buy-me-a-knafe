@@ -19,13 +19,16 @@ $(".grantee-profile").on("input", ".amount-form .number-input", function () {
   $(".submit-btn").text(`Support ${amount * KNAFEPRICE}₪`);
 });
 const homePage = function () {
-  window.location.href = `/homepage/index.html`;
+  const url = window.location.href;
+  const id = url.slice(url.lastIndexOf("=") + 1);
+
+  window.location.href = `/homepage/index.html?id=${id}`;
 };
 
 const done = "finallyDone !";
 const getIdFromUrl = function () {
   const url = window.location.href;
-  const id = url.slice(url.indexOf("=") + 1);
+  const id = url.slice(url.indexOf("=") + 1, url.indexOf("&"));
   return id;
 };
 

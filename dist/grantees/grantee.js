@@ -28,7 +28,14 @@ const homePage = function () {
 const done = "finallyDone !";
 const getIdFromUrl = function () {
   const url = window.location.href;
-  const id = url.slice(url.indexOf("=") + 1, url.indexOf("&"));
+  let id;
+  let index = url.indexOf("&");
+  if (index != -1) {
+    id = url.slice(url.indexOf("=") + 1, index);
+  } else {
+    id = url.slice(url.indexOf("=") + 1);
+  }
+
   return id;
 };
 
